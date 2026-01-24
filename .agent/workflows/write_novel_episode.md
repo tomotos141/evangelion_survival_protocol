@@ -38,11 +38,15 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
 
 ## 5. Publishing (公開準備)
 - [ ] **Convert Format**: 完成した原稿を投稿サイト（Pixiv/ハーメルン）用のフォーマットに変換する。
-    - ルビ変換: `[[rb:漢字 > よみがな]]` (Pixiv) / `|漢字《よみがな》` (Hameln)
-    - 本文保存先: `dist/[site]/XX_title.txt`
+    - Pixiv用: `dist/pixiv/XX_title_pixiv.txt`
+        - ルビ: `[[rb:漢字 > よみがな]]`
+        - 改ページ: `[newpage]`
+        - 章タイトル: `[chapter: ...]`
+    - ハーメルン用: `dist/hameln/XX_title_hameln.txt`
+        - ルビ: `|漢字《よみがな》`
 - [ ] **Create Assets**: 必要に応じて表紙画像やキャプション（あらすじ）を作成する。
-    - 表紙: `generate_image` ツールを使用
-    - あらすじ: 本文の内容とタイトルに合わせて作成
+    - 表紙画像: `generate_image` で作成し `dist/[site]/cover.png` に保存。
+    - あらすじ: テキストファイル内にメモするか、キャプション用ファイルを作成。
 
 ## 6. Version Control & Cleanup (終了処理)
 - [ ] **Commit**: 公開用ファイルも含めてすべてコミットする。
