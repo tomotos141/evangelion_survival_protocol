@@ -18,6 +18,10 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
     - 達成すべき感情的なゴールは（サスペンス、虚無感、安堵など）？
 - [ ] **Review Settings**: 既存の設定ファイル (`docs/world/`, `docs/characters/`) を確認し、矛盾がないかチェックする。
     - 特に **`docs/world/hard_mode_guidelines.md`** を参照し、当該エピソードに登場する使徒やギミックが「進化」しているか確認する。
+- [ ] **Define New Threat (Angels)**: **【重要】** 毎回、そのエピソードに登場する使徒（または脅威）の新規設定ファイルを作成する。
+    - **Template**: `docs/templates/angel_template.md` を使用すること。
+    - **Policy**: 原作の使徒をそのまま出さず、必ず「オリジナル変異体」または「完全新規使徒」として定義する。
+    - 保存先: `docs/world/angel_[name].md`
 - [ ] **Context Check**: 直前のエピソードのラストシーン（またはあらすじ）を確認し、**キャラクターの感情状態（Mood）や身体状態（疲労、怪我）** が正しく引き継がれているかメモする。
 
 ## 2. Drafting (執筆)
