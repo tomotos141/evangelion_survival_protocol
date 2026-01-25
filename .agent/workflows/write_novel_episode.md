@@ -17,7 +17,7 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
     - 誰の視点か？
     - 達成すべき感情的なゴールは（サスペンス、虚無感、安堵など）？
 - [ ] **Review Settings**: 既存の設定ファイル (`docs/world/`, `docs/characters/`) を確認し、矛盾がないかチェックする。
-    - 特に **`docs/world/hard_mode_guidelines.md`** を参照し、当該エピソードに登場する使徒やギミックが「進化」しているか確認する。
+    - 特に **`docs/world/hard_mode_guidelines.md`** および **`docs/world/eva_abilities.md`** を参照し、当該エピソードに登場する使徒やエヴァの能力・形態が「最新の状態」であるか確認する。
 - [ ] **Define New Threat (Angels)**: **【重要】** 毎回、そのエピソードに登場する使徒（または脅威）の新規設定ファイルを作成する。
     - **Template**: `docs/templates/angel_template.md` を使用すること。
     - **Policy**: 原作の使徒をそのまま出さず、必ず「オリジナル変異体」または「完全新規使徒」として定義する。
@@ -46,6 +46,7 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
     - [ ] **Fact Check**: 年齢（引き算は合っているか）、日付、経過時間（「14年ぶり」ではなく「11年ぶり」など）が正しいか。
     - [ ] **Character Voice**: シンジの独白が「冷徹な工作員」になっておらず、「PTSDサバイバー」として描かれているか。
     - [ ] **Setting**: 魔法や技術のルール違反がないか。
+    - **Eva Abilities**: 本文中のエヴァの挙動が `docs/world/eva_abilities.md` で定義された固有能力や変異段階に基づいているか。
 - [ ] **Run Author Style Check**: `author_style_check` スキルを使用し、著者の嗜好（美学）に合致しているか判定する。
     - [ ] "Beautiful Ruin"（静寂、廃墟、終わりの予感）の雰囲気はあるか？
     - [ ] "Competence & Mask"（有能な演技、腹の探り合い）が魅力的に描かれているか？
@@ -69,6 +70,8 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
     - Pixiv用: `dist/pixiv/XX_title_pixiv.txt`
 
 ## 6. Cleanup (終了処理)
-- [ ] **Update Character Settings**: **【重要】** 今回のエピソードで発生したキャラクターの変化（精神状態、負傷、人間関係の進展など）を、`docs/characters/` 内の各ファイルの **`8. Status Evolution Log`** に追記する。
+- [ ] **Update Settings**: **【重要】** 今回のエピソードで発生したキャラクターや機体の変化を記録する。
+    - `docs/characters/` 内の各ファイルの **`8. Status Evolution Log`** に追記。
+    - **`docs/world/eva_abilities.md`**: エヴァの能力が進化したり、新しい形態（変異段階）が発現した場合は、その内容を追記・更新する。
 - [ ] **Commit**: 公開用ファイルおよび更新した設定ファイルも含めてすべてコミットする。
 - [ ] **Next Steps**: 次に書くべきシーンや、明らかになった設定の穴をメモする。

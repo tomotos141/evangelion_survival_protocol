@@ -34,6 +34,10 @@ description: 小説の本文が、定義された世界観やキャラクター�
 
 ### 2. World Building Consistency (世界観の整合性)
 - **Rules & Mechanics**: 魔法、技術、超常現象などが、定義済みのルールに従っているか。
+- **Eva Abilities & Evolution**: 
+    - エヴァの行動が `docs/world/eva_abilities.md` で定義された各機体の「固有能力（Origin Skill）」の性質に合致しているか。
+    - 機体の外外見や挙動が、現在の「変異段階（Evolutionary Stage）」と矛盾していないか。
+    - 能力の使用によるパイロットへの代償（結晶化、精神汚染など）が描写されているか。
 - **Setting Details**: 地理的な移動、天候、時間経過、文化的習慣などが設定通りか。
 - **Fact Checking**: 固有名詞の表記揺れや、過去に提示された事実との食い違いがないか。
 
