@@ -69,5 +69,6 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
     - Pixiv用: `dist/pixiv/XX_title_pixiv.txt`
 
 ## 6. Cleanup (終了処理)
-- [ ] **Commit**: 公開用ファイルも含めてすべてコミットする。
+- [ ] **Update Character Settings**: **【重要】** 今回のエピソードで発生したキャラクターの変化（精神状態、負傷、人間関係の進展など）を、`docs/characters/` 内の各ファイルの **`8. Status Evolution Log`** に追記する。
+- [ ] **Commit**: 公開用ファイルおよび更新した設定ファイルも含めてすべてコミットする。
 - [ ] **Next Steps**: 次に書くべきシーンや、明らかになった設定の穴をメモする。
