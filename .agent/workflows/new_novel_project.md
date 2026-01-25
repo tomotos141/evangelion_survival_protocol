@@ -32,21 +32,26 @@ description: Create a new novel project structure
 $projectName = "[project_name]"
 $baseDir = "d:\antigravity\novel\projects\$projectName"
 
-# 1. Create Directories (with -Force to ignore if exists)
+# 1. Create Directories
 mkdir "$baseDir" -Force
 mkdir "$baseDir\docs" -Force
 mkdir "$baseDir\docs\characters" -Force
 mkdir "$baseDir\docs\world" -Force
 mkdir "$baseDir\docs\templates" -Force
 mkdir "$baseDir\drafts" -Force
-mkdir "$baseDir\dist" -Force
+mkdir "$baseDir\dist\pixiv" -Force
 
 # 2. Copy Templates from .agent/templates
-$templateSource = "d:\antigravity\novel\.agent\templates\character_template.md"
-if (Test-Path $templateSource) {
-    Copy-Item $templateSource -Destination "$baseDir\docs\templates\character_template.md" -Force
-} else {
-    Write-Warning "Master template not found at $templateSource"
+$templates = @(
+    "character_template.md",
+    "threat_template.md",
+    "world_rule_template.md"
+)
+
+foreach ($t in $templates) {
+    if (Test-Path "d:\antigravity\novel\.agent\templates\$t") {
+        Copy-Item "d:\antigravity\novel\.agent\templates\$t" -Destination "$baseDir\docs\templates\$t" -Force
+    }
 }
 
 # 3. Create project_profile.md
@@ -58,22 +63,18 @@ $profileContent = @"
 
 ## Specific Tone (この作品独自のトーン)
 共通のAuthor Profile (Hardboiled, Cynical) をベースにしつつ、この作品で特に意識すべき点があれば記述してください。
-（例：コメディ要素強め、ジュブナイル、幻想的など）
 "@
 Set-Content -Path "$baseDir\docs\project_profile.md" -Value $profileContent -Encoding UTF8
 
-# 4. Create overall_plot.md (Adding Plot Template)
+# 4. Create overall_plot.md
 $plotContent = @"
 # Overall Plot: $projectName
 
 ## Story Arc (構成案)
 
 ### Act 1: [Title]
-- Case/Episode 1:
-- Case/Episode 2:
-
-### Act 2: [Title]
-- 
+- Episode 1: 
+- Episode 2: 
 
 ### Key Mysteries (未解決の伏線)
 1. 

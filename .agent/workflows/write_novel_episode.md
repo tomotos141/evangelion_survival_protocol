@@ -7,7 +7,9 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
 このワークフローは、新しいエピソードや設定を執筆する際の一連のプロセスを定義したものです。
 各ステップで必ず「著者の作家性（Hardboiled, Cynical）」に沿っているかを確認してください。
 
-## 1. Preparation & Concept (準備・構想)
+## 0. Project Environment (環境確認)
+- [ ] **Identify Project**: 現在作業中のプロジェクトディレクトリ（例：`projects/angel_return/`）を確認し、以降の操作はそのディレクトリ内で行う。
+- [ ] **Set Context**: 以下の手順における `docs/` や `drafts/` はすべてプロジェクトディレクトリ内を指す。
 - [ ] **Load Skills**: 以下のスキルファイルを必ず `view_file` で読み込み、内容を把握する。
     - `.agent/skills/consistency_check/SKILL.md` (整合性・事実確認用)
     - `.agent/skills/story_editor/SKILL.md` (文体・演出チェック用)
