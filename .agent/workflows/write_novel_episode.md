@@ -58,9 +58,9 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
 
 ## 5. Publishing (公開準備)
 - [ ] **Convert Format**: 完成した原稿をPixiv用のフォーマットに変換する。
-    - **Agent Action**: 以下のPowerShellコマンド等を実行して、`dist/pixiv/` にテキストファイルを生成する。
+    - **Agent Action**: 以下のPowerShellコマンドを実行して、`dist/pixiv/` にテキストファイルを生成する。
     ```powershell
-    $c = Get-Content 'drafts/XX.md' -Raw; $c = $c -replace '^# .*','' -replace '\*\*\*','[newpage]' -replace '## (.*)','[chapter: $1]'; Set-Content 'dist/pixiv/XX.txt' $c
+    powershell -ExecutionPolicy Bypass -File .agent/tools/convert_to_pixiv.ps1 -InputPath "drafts/XX_title.md" -OutputPath "dist/pixiv/XX_title_pixiv.txt"
     ```
     - Pixiv用: `dist/pixiv/XX_title_pixiv.txt`
 
