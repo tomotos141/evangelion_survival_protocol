@@ -29,14 +29,29 @@ Example: `/finalize_episode projects/angel_return/drafts/05_ghost_in_the_shell.m
         - `***` (区切り線) -> `[newpage]`
         - ルビ記法: `漢字（よみがな）` -> `[[rb: 漢字 > よみがな ]]` (※自動変換はリスクが高いので、必要なら手動で行うようコメントを残す)
 
-### 3. Git Commit (コミット)
-- [ ] 変換されたファイルとドラフトを含めて、git commit する。
+### 3. Auto-Generate Caption (キャプション自動生成)
+- [ ] エージェントは、完成したエピソードの内容を元にキャプション（あらすじ・抜粋）を作成する。
+- [ ] 作成したキャプションを `dist/pixiv/caption.txt` の末尾に追記する。
+    - **フォーマット**:
+        ```text
+        --------------------------------------------------
+
+        [第X話キャプション]
+        タイトル：(エピソードタイトル)
+
+        (あらすじ本文：読者の興味を惹くようなフックを含める)
+
+        「(印象的なセリフの抜粋)」
+        ```
+
+### 4. Git Commit (コミット)
+- [ ] 変換されたファイル、追加されたキャプション、ドラフトを含めて、git commit する。
 
 ## Command Script (Auto-Run)
 
 // turbo
 以下のスクリプトは、「フォーマット変換」と「コミット」を自動化するものです。
-※ 事前に整合性チェックが完了している前提です。
+※ 事前に整合性チェックとキャプション生成が完了している前提です。
 
 ```powershell
 $draftPath = "[episode_file_path]"
@@ -48,6 +63,7 @@ $projectDir = Split-Path (Split-Path $absDraftPath -Parent) -Parent
 $fileName = Split-Path $absDraftPath -Leaf
 $baseName = [System.IO.Path]::GetFileNameWithoutExtension($fileName)
 $distPath = "$projectDir\dist\pixiv\${baseName}_pixiv.txt"
+$captionPath = "$projectDir\dist\pixiv\caption.txt"
 
 # 1. Read Content
 $content = Get-Content $absDraftPath -Raw -Encoding UTF8
@@ -68,8 +84,8 @@ Set-Content -Path $distPath -Value $content -Encoding UTF8
 Write-Host "Converted file saved to: $distPath"
 
 # 4. Git Commit
-git add "$absDraftPath" "$distPath"
+git add "$absDraftPath" "$distPath" "$captionPath"
 git commit -m "$commitMessage"
 
-Write-Host "Committed changes for: $baseName"
+Write-Host "Committed changes for: $baseName including caption"
 ```
