@@ -58,12 +58,11 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
 
 ## 5. Publishing (公開準備)
 - [ ] **Convert Format**: 完成した原稿をPixiv用のフォーマットに変換する。
+    - **Agent Action**: 以下のPowerShellコマンド等を実行して、`dist/pixiv/` にテキストファイルを生成する。
+    ```powershell
+    $c = Get-Content 'drafts/XX.md' -Raw; $c = $c -replace '^# .*','' -replace '\*\*\*','[newpage]' -replace '## (.*)','[chapter: $1]'; Set-Content 'dist/pixiv/XX.txt' $c
+    ```
     - Pixiv用: `dist/pixiv/XX_title_pixiv.txt`
-        - ルビ: `[[rb:漢字 > よみがな]]`
-        - 改ページ: `[newpage]`
-        - 章タイトル: `[chapter: ...]`
-    - **Critical Rule**: キャプションファイル (`caption.txt`) などを更新する際は、**絶対に `run_command` (PowerShell Add-Content) を使用しないこと。** 文字化けの原因となるため、必ず `view_file` で内容を読み込んだ後、`write_to_file` で全体を上書き保存する。
-- [ ] **Final Check**: 変換後のファイルで、禁止ワード（旧設定の名残など）が入っていないか最終チェックする。
 
 ## 6. Cleanup (終了処理)
 - [ ] **Commit**: 公開用ファイルも含めてすべてコミットする。
