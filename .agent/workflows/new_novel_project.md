@@ -32,15 +32,24 @@ description: Create a new novel project structure
 $projectName = "[project_name]"
 $baseDir = "d:\antigravity\novel\projects\$projectName"
 
-# 1. Create Directories
-mkdir "$baseDir"
-mkdir "$baseDir\docs"
-mkdir "$baseDir\docs\characters"
-mkdir "$baseDir\docs\world"
-mkdir "$baseDir\drafts"
-mkdir "$baseDir\dist"
+# 1. Create Directories (with -Force to ignore if exists)
+mkdir "$baseDir" -Force
+mkdir "$baseDir\docs" -Force
+mkdir "$baseDir\docs\characters" -Force
+mkdir "$baseDir\docs\world" -Force
+mkdir "$baseDir\docs\templates" -Force
+mkdir "$baseDir\drafts" -Force
+mkdir "$baseDir\dist" -Force
 
-# 2. Create project_profile.md
+# 2. Copy Templates from .agent/templates
+$templateSource = "d:\antigravity\novel\.agent\templates\character_template.md"
+if (Test-Path $templateSource) {
+    Copy-Item $templateSource -Destination "$baseDir\docs\templates\character_template.md" -Force
+} else {
+    Write-Warning "Master template not found at $templateSource"
+}
+
+# 3. Create project_profile.md
 $profileContent = @"
 # Project Profile: $projectName
 
@@ -53,7 +62,25 @@ $profileContent = @"
 "@
 Set-Content -Path "$baseDir\docs\project_profile.md" -Value $profileContent -Encoding UTF8
 
-# 3. Create initial draft file
+# 4. Create overall_plot.md (Adding Plot Template)
+$plotContent = @"
+# Overall Plot: $projectName
+
+## Story Arc (構成案)
+
+### Act 1: [Title]
+- Case/Episode 1:
+- Case/Episode 2:
+
+### Act 2: [Title]
+- 
+
+### Key Mysteries (未解決の伏線)
+1. 
+"@
+Set-Content -Path "$baseDir\docs\overall_plot.md" -Value $plotContent -Encoding UTF8
+
+# 5. Create initial draft file
 $draftContent = @"
 # Episode 1: Title
 
