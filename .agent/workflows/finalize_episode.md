@@ -79,6 +79,15 @@ $content = $content -replace '##\s+(.*)', '[chapter: $1]'
 $content = $content -replace '\*\*(.*?)\*\*', '$1'
 $content = $content -replace '\*(.*?)\*', '$1'
 
+# Remove Draft Notes & Metadata
+# Remove lines like "Loc: ... / Time: ..."
+$content = $content -replace '(?m)^Loc:.*$', ''
+# Remove lines starting with (xxx) used for notes, e.g., (地の文...)
+$content = $content -replace '(?m)^（.*）\s*$', ''
+$content = $content -replace '(?m)^\(.*\)\s*$', ''
+# Remove empty lines created by removals (optional cleanup, removing 3+ newlines)
+$content = $content -replace '(\r?\n){3,}', "`n`n"
+
 # 3. Save to Dist
 Set-Content -Path $distPath -Value $content -Encoding UTF8
 Write-Host "Converted file saved to: $distPath"
