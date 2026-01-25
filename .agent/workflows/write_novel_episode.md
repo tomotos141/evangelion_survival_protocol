@@ -9,6 +9,7 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
 
 ## 1. Preparation & Concept (準備・構想)
 - [ ] **Load Skills**: 以下のスキルファイルを必ず `view_file` で読み込み、内容を把握する。
+    - `.agent/skills/consistency_check/SKILL.md` (整合性・事実確認用)
     - `.agent/skills/story_editor/SKILL.md` (文体・演出チェック用)
     - `.agent/skills/author_style_check/SKILL.md` (著者の美学チェック用)
     - `.agent/skills/novel_writing/SKILL.md` (執筆技法用)
@@ -29,6 +30,10 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
     - [ ] 文体はハードボイルドでドライか？（幼稚な表現がないか）
     - [ ] 固有名詞や未来知識の不自然な使用はないか？
     - [ ] 「予定調和」になっていないか？（サスペンスや不穏さはあるか）
+- [ ] **Run Consistency Check**: `consistency_check` スキルを使用し、事実関係と設定の整合性を厳密に検証する。
+    - [ ] **Fact Check**: 年齢（引き算は合っているか）、日付、経過時間（「14年ぶり」ではなく「11年ぶり」など）が正しいか。
+    - [ ] **Character Voice**: シンジの独白が「冷徹な工作員」になっておらず、「PTSDサバイバー」として描かれているか。
+    - [ ] **Setting**: 魔法や技術のルール違反がないか。
 - [ ] **Run Author Style Check**: `author_style_check` スキルを使用し、著者の嗜好（美学）に合致しているか判定する。
     - [ ] "Beautiful Ruin"（静寂、廃墟、終わりの予感）の雰囲気はあるか？
     - [ ] "Competence & Mask"（有能な演技、腹の探り合い）が魅力的に描かれているか？
