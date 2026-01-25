@@ -46,6 +46,11 @@ description: 小説の構想、執筆、推敲を支援するための包括的�
 - **File Management**: プロジェクトのファイル構造を整理して提案・管理してください（例: `characters/`, `world/`, `chapters/` など）。
 - **Context**: 矛盾を避けるため、確立された設定やキャラクター情報を常に考慮してください。
 
+### 7. Technical Constraints (技術的制約)
+- **File Encoding**: 日本語を含むテキストファイルを扱う際は、**文字化け (Mojibake)** に厳重に注意してください。
+    - PowerShellの `Add-Content` や `>>` リダイレクトは、環境によってエンコーディングが異なるため使用禁止です。
+    - ファイルを追記・修正する際は、必ず **`read_resource` (または `view_file`)** で既存の内容を取得し、**`write_to_file`** で全体を書き直す方法を採用してください。
+
 ## Common Workflows
 
 ### Starting a New Project
