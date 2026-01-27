@@ -23,11 +23,17 @@ try {
     # 5. 斜体 (*) を削除
     $content = $content -replace '\*(.*?)\*', '$1'
 
+    # 6. [caption] ブロックを削除
+    $content = $content -replace '(?s)\[caption\].*?\[/caption\]', ''
+    # 余分な改行をトリム
+    $content = $content.Trim()
+
     # 保存
     Set-Content -Path $OutputPath -Value $content -Encoding UTF8
     Write-Host "Success: Converted $InputPath to $OutputPath"
 
-} catch {
+}
+catch {
     Write-Error "Conversion Failed: $_"
     exit 1
 }
