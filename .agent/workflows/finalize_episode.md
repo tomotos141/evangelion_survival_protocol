@@ -68,6 +68,15 @@ $captionPath = "$projectDir\dist\pixiv\caption.txt"
 # 1. Read Content
 $content = Get-Content $absDraftPath -Raw -Encoding UTF8
 
+# Check for Caption Existence (Guardrail)
+if ($content -match '(?ms)^\[caption\].*?\[/caption\]') {
+    # Remove Caption Block from Output
+    $content = $content -replace '(?ms)^\[caption\].*?\[/caption\]\s*$', ''
+} else {
+    Write-Error "CRITICAL ERROR: [caption] block is missing in the draft file. Please add a caption before finalizing."
+    exit 1
+}
+
 # 2. Convert Format (Basic Markdown to Pixiv)
 # Remove Title Header (# Title)
 $content = $content -replace '^#\s+.*$', ''
