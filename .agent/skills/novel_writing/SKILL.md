@@ -48,8 +48,10 @@ description: 小説の構想、執筆、推敲を支援するための包括的�
 
 ### 7. Technical Constraints (技術的制約)
 - **File Encoding**: 日本語を含むテキストファイルを扱う際は、**文字化け (Mojibake)** に厳重に注意してください。
-    - PowerShellの `Add-Content` や `>>` リダイレクトは、環境によってエンコーディングが異なるため使用禁止です。
-    - ファイルを追記・修正する際は、必ず **`read_resource` (または `view_file`)** で既存の内容を取得し、**`write_to_file`** で全体を書き直す方法を採用してください。
+- **File Overwrite Safety (CRITICAL)**:
+    - **追記時の禁止事項**: 既存ファイルに対し、`write_to_file` (Overwrite=True) で**新しい部分だけを書いてはいけない**。それは**既存部分の削除**を意味する。
+    - **正しい追記手順**: 必ず `view_file` で**既存の全内容**を取得し、ローカルで「既存 + 新規」に結合してから、`write_to_file` で**全体を**書き直すこと。
+    - または `replace_file_content` の適切な置換ロジックを使用すること。
 
 ## Common Workflows
 
