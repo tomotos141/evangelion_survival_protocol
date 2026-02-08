@@ -1,91 +1,119 @@
 ---
-description: 小説執筆の標準ワークフロー（構想から初稿執筆、Git管理まで）
+description: 小説執筆の標準ワークフロー（構想から初稿執筆、公開準備まで）
 ---
 
-# Feature Development Workflow - Novel Writing
+# Episode Writing Workflow
 
-このワークフローは、新しいエピソードや設定を執筆する際の一連のプロセスを定義したものです。
-各ステップで必ず「著者の作家性（Hardboiled, Cynical）」に沿っているかを確認してください。
+新しいエピソードを構想・執筆・公開するための標準ワークフロー。
+各ステップで「著者の作家性（Hardboiled, Cynical）」に沿っているかを常に確認すること。
 
-## 0. Project Environment (環境確認)
-- [ ] **Identify Project**: 現在作業中のプロジェクトディレクトリ（例：`projects/angel_return/`）を確認し、以降の操作はそのディレクトリ内で行う。
-- [ ] **Set Context**: 以下の手順における `docs/` や `drafts/` はすべてプロジェクトディレクトリ内を指す。
-- [ ] **Load Skills**: 以下のスキルファイルを必ず `view_file` で読み込み、内容を把握する。
-    - `.agent/skills/consistency_check/SKILL.md` (整合性・事実確認用)
-    - `.agent/skills/story_editor/SKILL.md` (文体・演出チェック用)
-    - `.agent/skills/author_style_check/SKILL.md` (著者の美学チェック用)
-    - `.agent/skills/novel_writing/SKILL.md` (執筆技法用)
-- [ ] **Define Goal**: 書こうとしている章やシーンの目的を明確にする。
-    - 誰の視点か？
-    - 達成すべき感情的なゴールは（サスペンス、虚無感、安堵など）？
-- [ ] **Review Settings**: 既存の設定ファイル (`docs/world/`, `docs/characters/`) を確認し、矛盾がないかチェックする。
-    - 特に **`docs/world/hard_mode_guidelines.md`** および **`docs/world/eva_abilities.md`** を参照し、当該エピソードに登場する使徒やエヴァの能力・形態が「最新の状態」であるか確認する。
-- [ ] **Review Foreshadowing**: `docs/foreshadowing.md` を確認し、未回収の伏線（Status: 🔴/🟡）を把握する。
-    - 今回のエピソードで回収・進展させるべき伏線があれば、それをプロットの要件に加える。
-- [ ] **Define New Threat (Angels)**: **【重要】** 毎回、そのエピソードに登場する使徒（または脅威）の新規設定ファイルを作成する。
-    - **Template**: `docs/templates/angel_template.md` を使用すること。
-    - **Policy**: 原作の使徒をそのまま出さず、必ず「オリジナル変異体」または「完全新規使徒」として定義する。
-    - 保存先: `docs/world/angel_[name].md`
-- [ ] **Context Check**: 直前のエピソードのラストシーン（またはあらすじ）を確認し、**キャラクターの感情状態（Mood）や身体状態（疲労、怪我）** が正しく引き継がれているかメモする。
+## 0. Preparation (環境・前提確認)
+
+- [ ] **Identify Project**: プロジェクトディレクトリ（例：`projects/angel_return/`）を特定する。以降 `docs/`, `drafts/`, `dist/` はすべてこのディレクトリ内を指す。
+- [ ] **Review Context**: 以下の資料を `Read` ツールで確認する。
+    - `docs/overall_plot_v2.md` — 全体プロットと進捗
+    - `docs/foreshadowing.md` — 未回収の伏線（🔴/🟡）
+    - 直前エピソードのドラフト末尾 — キャラの感情・身体状態の引き継ぎ
+    - `docs/world/hard_mode_guidelines.md`, `docs/world/eva_abilities.md` — 使徒・エヴァの最新設定
+- [ ] **Define Goal**: 今回のエピソードで達成すべきことを明確にする。
+    - 誰の視点か？（基本：一人称シンジ/僕）
+    - 感情的なゴール（サスペンス、虚無感、安堵、etc.）
+    - 回収する伏線、新規に仕込む伏線
+
+## 1. Episode Design (エピソードデザイン)
+
+- [ ] **Check Existing Design**: `docs/episodes/ep##_title.md` が既に存在するか確認する。
+- [ ] **Create/Update Design**: シーン構成を設計し、デザインファイルを作成する。
+    - **保存先**: `docs/episodes/ep##_english_title.md`
+    - **内容**: シーン一覧（場所・登場人物・目的）、伏線計画、キーとなるセリフ案
+    - **設定不足の確認**: 未定義の使徒・ギミック・キャラがあれば、`docs/world/` に設定ファイルを先に作成する。
+- [ ] **Get User Approval**: デザインをユーザーに提示し、承認を得る。
+    - 提示すべき項目: テーマ、前回からの継承、伏線計画、新要素
 
 ## 2. Drafting (執筆)
-- [ ] **Plotting**: `novel_writing` スキルを活用し、プロット（構成案）を作成する。
-    - **【重要】設定の不足確認**: プロット段階で、未定義のキャラクター、場所、ギミックが登場する場合は、**執筆前に設定資料 (`docs/`) の新規作成や追記を提案する**こと。
-    - **Foreshadowing Plan**: 新たに提示する伏線や謎がある場合（例：意味深な台詞、不可解な現象）、それを意図的にプロットに組み込む。
-    - **Pre-Draft Consistency Check**: 作成したプロットが、既存の設定や直前の展開と矛盾していないか簡易チェックする。
-- [ ] **Get User Approval**: 以下の要素を明示して、ユーザーにプロットの承認を求める。
-    - **今回のテーマ**: 何を描くエピソードか。
-    - **前回からの継承**: 主人公の心理状態はどうなっているか。
-    - **伏線（Foreshadowing）**: 回収する既存伏線、または新規に仕込む伏線は何か。
-    - **新しい要素**: 新登場のキャラや設定。
-- [ ] **Drafting**: `drafts/` ディレクトリに新しいファイルを作成し、執筆する。
-    - ファイル名規則: `XX_title.md` (例: `02_hell_is_here.md`)
-    - **Rule: Density of Senses**: 「Show, Don't Tell」を徹底し、最低でも「1シーンにつき五感のうち3つ以上の描写」を組み込む。特に本作の美学である「生理的嫌悪感」「美しい破滅」の描写を一行で済ませない。
-    - **Rule: Anti-Scripting**: シナリオ的な「Scene X: 場所/人物」といった見出しに頼りすぎない。地の文によるシームレスな転換と、密度のある情景描写を重視する。文章量を無闇に増やすのではなく、一文一文の重みと、読者に伝わる解像度を優先すること。
-    - **Rule**: メタ発言の禁止を徹底する。
 
-## 3. Review & Quality Check (品質・整合性チェック) - CRITICAL STEP
-44: このステップをスキップしてはいけません。
-- [ ] **Run Story Editor Check**: `story_editor` スキルの手順に従い、ドラフトを自己レビューする。
-    - [ ] 文体はハードボイルドでドライか？（幼稚な表現がないか）
-    - [ ] **Density Check**: 描写が不足し、あらすじ（プロット消化）になっていないか？ 特にキャラクターの心理的な「ため（葛藤、迷い）」や「生理的な反応」が詳細に描かれているか？
+- [ ] **Write Draft**: `drafts/` にファイルを作成し、本文を執筆する。
+    - **ファイル名規則**: `##_english_title.md`（例: `06_thunderbolt.md`）
+    - **書式**:
+        - 冒頭: `# エピソードタイトル`
+        - シーン区切り: `***`
+        - 末尾: `[caption]...[/caption]` ブロック（キャプション）
+    - **執筆ルール**:
+        - **一人称・過去形**: シンジ視点、「僕」語り
+        - **Density of Senses**: 1シーンにつき五感のうち3つ以上の描写を組み込む
+        - **Anti-Scripting**: 「Scene X: 場所/人物」のような見出しに頼らず、地の文でシームレスに転換する
+        - **メタ発言禁止（CRITICAL）**: `Ep.X` 参照は厳禁。`あの夜`、`ラミエル戦`、`あの白い部屋` 等の作中表現で参照する
+        - **Show, Don't Tell**: 感情を直接語らず、身体反応・行動・五感描写で表現する
+
+## 3. Quality Check (品質チェック)
+
+**このステップをスキップしてはいけない。**
+
+- [ ] **Story Editor Check** (`story_editor` skill):
+    - [ ] 文体はハードボイルドでドライか？
+    - [ ] 描写が「あらすじ」になっていないか？（Density Check）
     - [ ] 固有名詞や未来知識の不自然な使用はないか？
-    - [ ] **Foreshadowing Check**: 仕込んだ伏線は効果的に機能しているか？ 唐突すぎたり、逆に露骨すぎたりしないか？
-    - [ ] 「予定調和」になっていないか？（サスペンスや不穏さはあるか）
-- [ ] **Run Consistency Check**: `consistency_check` スキルを使用し、事実関係と設定の整合性を厳密に検証する。
-    - [ ] **Fact Check**: 年齢（引き算は合っているか）、日付、経過時間（「14年ぶり」ではなく「11年ぶり」など）が正しいか。
-    - [ ] **Character Voice**: シンジの独白が「冷徹な工作員」になっておらず、「PTSDサバイバー」として描かれているか。
-    - [ ] **Setting**: 魔法や技術のルール違反がないか。
-    - **Eva Abilities**: 本文中のエヴァの挙動が `docs/world/eva_abilities.md` で定義された固有能力や変異段階に基づいているか。
-- [ ] **Run Author Style Check**: `author_style_check` スキルを使用し、著者の嗜好（美学）に合致しているか判定する。
-    - [ ] "Beautiful Ruin"（静寂、廃墟、終わりの予感）の雰囲気はあるか？
-    - [ ] "Competence & Mask"（有能な演技、腹の探り合い）が魅力的に描かれているか？
-    - [ ] 不要な「甘さ」や「ご都合主義」が混入していないか？
-- [ ] **Run Reader Engagement Check**: `story_editor` スキルの「没入度チェック」を行い、以下の点を確認する。
-    - [ ] 章のラストは「続きを読みたくなる」引き（クリフハンガー等）になっているか？
-    - [ ] 期待を裏切るツイストや、不穏さを残す演出が含まれているか？
-- [ ] **Propose Fixes**: 問題点があれば修正案を提示し、ユーザーの承認を得てから修正を実行する。
+    - [ ] **Episode Number Check**: `Ep.\d` パターンが地の文に残っていないか？
+    - [ ] 伏線は効果的に機能しているか？
+    - [ ] 「予定調和」になっていないか？
+- [ ] **Consistency Check** (`consistency_check` skill):
+    - [ ] 時系列・事実関係に誤りはないか？
+    - [ ] キャラの言動が直前エピソードの状態と矛盾していないか？
+    - [ ] エヴァの挙動が `eva_abilities.md` の定義に基づいているか？
+- [ ] **Author Style Check** (`author_style_check` skill):
+    - [ ] "Beautiful Ruin" の雰囲気はあるか？
+    - [ ] 不要な「甘さ」「ご都合主義」が混入していないか？
+- [ ] **Reader Engagement Check**:
+    - [ ] 章のラストに「続きを読みたくなる」引きがあるか？
+    - [ ] 期待を裏切るツイストや不穏さが含まれているか？
 
-## 4. Version Control (バージョン管理)
-- [ ] **Commit**: ドラフト完成版をコミットする。
-    - `git add .`
-    - `git commit -m "Draft Episode XX: Title"`
+## 4. Pixiv Conversion (公開用変換)
 
-## 5. Publishing (公開準備)
-- [ ] **Convert Format**: 完成した原稿をPixiv用のフォーマットに変換する。
-    - **Agent Action**: 以下のPowerShellコマンドを実行して、`dist/pixiv/` にテキストファイルを生成する。
-    ```powershell
-    powershell -ExecutionPolicy Bypass -File .agent/tools/convert_to_pixiv.ps1 -InputPath "drafts/XX_title.md" -OutputPath "dist/pixiv/XX_title_pixiv.txt"
+- [ ] **Generate Pixiv Version**: ドラフトを元にPixiv投稿用テキストを**手動で**生成する。
+    - **出力先**: `dist/pixiv/##_title_pixiv.txt`
+    - **変換ルール**:
+        | Draft (Markdown) | Pixiv (Plain Text) |
+        |---|---|
+        | `# タイトル` | 削除（タイトルなし） |
+        | `***` | `　　　　　　　　　　　＊＊＊` （全角スペース11個＋全角アスタリスク3個） |
+        | `**太字**` | `——太字——` または強調なし |
+        | `——` (ダッシュ) | `――`（全角ダッシュ） |
+        | `[caption]...[/caption]` | **削除**（Pixiv版には含めない） |
+    - **エンコーディング**: UTF-8 **with BOM** (`﻿` をファイル先頭に付与)
+    - **改行**: 原文の改行をそのまま維持
+
+- [ ] **Update Caption**: `dist/pixiv/caption.txt` を更新する。
+    - **フォーマット**:
+        ```
+        --------------------------------------------------
+
+        [第X話キャプション]
+        タイトル：(日本語タイトル) (English Title)
+
+        (あらすじ: 3〜5行、読者のフックとなる内容)
+
+        「(印象的なセリフの抜粋)」
+        ```
+
+## 5. Documentation Update (ドキュメント更新)
+
+- [ ] **Update Plot**: `docs/overall_plot_v2.md` にエピソード概要とリンクを追記する。
+    - `※詳細: [ep##_title.md](./episodes/ep##_title.md)`
+- [ ] **Update Foreshadowing**: `docs/foreshadowing.md` を更新する。
+    - 新規の謎 → `🔴 Unresolved` で追加
+    - 既存伏線に進展 → `🟡 In Progress` に更新
+    - 回収済み → `🟢 Resolved` に変更
+- [ ] **Update Settings**: キャラ・機体の変化があれば `docs/characters/`, `docs/world/eva_abilities.md` を更新する。
+
+## 6. Final Validation & Commit
+
+- [ ] **Meta Reference Check**: 全出力ファイルに対して `Ep.\d` パターンの grep を実行し、残存がないことを確認する。
     ```
-    - Pixiv用: `dist/pixiv/XX_title_pixiv.txt`
-
-## 6. Cleanup (終了処理)
-- [ ] **Update Foreshadowing**: **【重要】** `docs/foreshadowing.md` を更新する。
-    - 今回のエピソードで新たに提示された謎があれば追加し、ステータスを `🔴 Unresolved` にする。
-    - 既存の伏線に進展があればステータスを `🟡 In Progress` に更新し、備考を追記する。
-    - 伏線が回収された場合はステータスを `🟢 Resolved` に変更する。
-- [ ] **Update Settings**: **【重要】** 今回のエピソードで発生したキャラクターや機体の変化を記録する。
-    - `docs/characters/` 内の各ファイルの **`8. Status Evolution Log`** に追記。
-    - **`docs/world/eva_abilities.md`**: エヴァの能力が進化したり、新しい形態（変異段階）が発現した場合は、その内容を追記・更新する。
-- [ ] **Commit**: 公開用ファイルおよび更新した設定ファイルも含めてすべてコミットする。
-- [ ] **Next Steps**: 次に書くべきシーンや、明らかになった設定の穴をメモする。
+    Grep pattern="Ep\.\d" path="drafts/##_title.md"
+    Grep pattern="Ep\.\d" path="dist/pixiv/##_title_pixiv.txt"
+    ```
+- [ ] **Commit** (ユーザーの指示があった場合のみ):
+    ```
+    git add drafts/##.md dist/pixiv/##_pixiv.txt dist/pixiv/caption.txt docs/...
+    git commit -m "Add Episode ##: Title"
+    ```
