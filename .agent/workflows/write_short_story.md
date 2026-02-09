@@ -37,7 +37,8 @@ description: Create and write a new short story
 ### 4. Refinement (Polish)
 1.  **Style Check**: `author_style_check` を実行し、著者の美学に合っているか確認。
 2.  **Conciseness Check**: `story_editor` を使用するが、特に「不要な描写の削除（Cut）」に重点を置く。
-3.  **Title**: タイトルを決定する。
+3.  **Natural Prose Check**: 構文の単調さ、抽象語の空回り、同義語連打、括弧過剰がないか確認する（`novel_writing` skill §9 参照）。
+4.  **Title**: タイトルを決定する。
 
 ### 5. Finalize
 1.  **Convert**: Pixiv投稿用のテキスト形式に変換する。

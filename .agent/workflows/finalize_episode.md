@@ -21,6 +21,7 @@ Example: `/finalize_episode projects/angel_return/drafts/06_thunderbolt.md "Add 
 - [ ] `Read` ツールでドラフト全文を読み込む。
 - [ ] `consistency_check` スキルの主要項目（Character Voice, Hard Mode Rule）を再確認する。
 - [ ] **Episode Number Check**: `Grep` で `Ep.\d` パターンが地の文に残っていないか確認する。
+- [ ] **Natural Prose Check**: 構文の単調さ、抽象語の空回り、同義語連打、括弧・記号の過剰使用がないか最終確認する。
 - [ ] ドラフト末尾に `[caption]...[/caption]` ブロックが存在するか確認する。なければ停止して作成を促す。
 - [ ] 問題があればユーザーに報告し、修正を促す。
 
