@@ -1,11 +1,13 @@
 ---
-description: 小説執筆の標準ワークフロー（構想から初稿執筆、公開準備まで）
+description: 小説執筆の標準ワークフロー（構想から初稿執筆、公開準備まで）。チーム体制を使う場合は `.claude/skills/team-write-episode.md` を参照。
 ---
 
 # Episode Writing Workflow
 
 新しいエピソードを構想・執筆・公開するための標準ワークフロー。
-各ステップで「著者の作家性（Hardboiled, Cynical）」に沿っているかを常に確認すること。
+各ステップで `author_profile.md` の美学に沿っているかを常に確認すること。
+
+> **チーム体制との関係**: `.claude/skills/team-write-episode.md` が Writer/Editor/Proofreader/Publisher の4エージェントを自動でオーケストレーションする上位版。本ワークフローは手動パスとして残す。
 
 ## 0. Preparation (環境・前提確認)
 
@@ -15,8 +17,9 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
     - `docs/foreshadowing.md` — 未回収の伏線（🔴/🟡）
     - 直前エピソードのドラフト末尾 — キャラの感情・身体状態の引き継ぎ
     - `docs/world/hard_mode_guidelines.md`, `docs/world/eva_abilities.md` — 使徒・エヴァの最新設定
+    - `.agent/author_profile.md` — 著者の美学と好み変遷（v2）
 - [ ] **Define Goal**: 今回のエピソードで達成すべきことを明確にする。
-    - 誰の視点か？（基本：一人称シンジ/僕）
+    - 誰の視点か？（基本：一人称シンジ/僕。他キャラPOVは「後から聞いた話」でフレーミング）
     - 感情的なゴール（サスペンス、虚無感、安堵、etc.）
     - 回収する伏線、新規に仕込む伏線
 
@@ -40,11 +43,15 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
         - 末尾: `[caption]...[/caption]` ブロック（キャプション）
     - **執筆ルール**:
         - **一人称・過去形**: シンジ視点、「僕」語り
+        - **他キャラPOV**: 「後から聞いた」「後日、〇〇がぽつりと漏らした」等のフレーミングでシンジ一人称に収める。深い内面描写は避け、伝聞形式で簡潔に
         - **Density of Senses**: 1シーンにつき五感のうち3つ以上の描写を組み込む
         - **Anti-Scripting**: 「Scene X: 場所/人物」のような見出しに頼らず、地の文でシームレスに転換する
-        - **メタ発言禁止（CRITICAL）**: `Ep.X` 参照は厳禁。`あの夜`、`ラミエル戦`、`あの白い部屋` 等の作中表現で参照する
+        - **メタ発言禁止（CRITICAL）**: `Ep.X` 参照は厳禁。`あの夜`、`ラミエル戦`、`あの白い部屋` 等の作中表現で参照する。「この物語」等のメタ表現も禁止
         - **Show, Don't Tell**: 感情を直接語らず、身体反応・行動・五感描写で表現する
         - **Natural Prose（AI臭の排除）**: 短い文と長い文を混ぜてリズムに変化をつける。抽象語だけで押し切らず動詞中心で書く。同義語連打・括弧への逃げ・前置き宣言・安全クッションは使わない
+        - **震え/揺れ表現の管理**: 「震えていた」「揺れていた」の同一エピソード内での重複を避ける。「掠れていた」「強張っていた」「硬直していた」等のバリエーションを使う
+        - **括弧モノローグ禁止**: `（……ここから始める）` のような括弧書きのモノローグは使わない。地の文に溶かす
+        - **テーマの解説禁止**: 作品のテーマや登場人物の行動の意味を地の文で解説しない。描写で示す
 
 ## 3. Quality Check (品質チェック)
 
@@ -65,24 +72,41 @@ description: 小説執筆の標準ワークフロー（構想から初稿執筆�
 - [ ] **Author Style Check** (`author_style_check` skill):
     - [ ] "Beautiful Ruin" の雰囲気はあるか？
     - [ ] 不要な「甘さ」「ご都合主義」が混入していないか？
+    - [ ] 「脆さと沈黙」「身体的・沈黙的・余白重視」の美学が反映されているか？
 - [ ] **Reader Engagement Check**:
     - [ ] 章のラストに「続きを読みたくなる」引きがあるか？
     - [ ] 期待を裏切るツイストや不穏さが含まれているか？
 
 ## 4. Pixiv Conversion (公開用変換)
 
-- [ ] **Generate Pixiv Version**: ドラフトを元にPixiv投稿用テキストを**手動で**生成する。
+- [ ] **Generate Pixiv Version**: ドラフトを元にPixiv投稿用テキストを生成する。
     - **出力先**: `dist/pixiv/##_title_pixiv.txt`
     - **変換ルール**:
         | Draft (Markdown) | Pixiv (Plain Text) |
         |---|---|
         | `# タイトル` | 削除（タイトルなし） |
         | `***` | `　　　　　　　　　　　＊＊＊` （全角スペース11個＋全角アスタリスク3個） |
-        | `**太字**` | `——太字——` または強調なし |
-        | `——` (ダッシュ) | `――`（全角ダッシュ） |
+        | `**太字**` | 太字マーカーを削除（テキストのみ残す） |
         | `[caption]...[/caption]` | **削除**（Pixiv版には含めない） |
     - **エンコーディング**: UTF-8 **with BOM** (`﻿` をファイル先頭に付与)
     - **改行**: 原文の改行をそのまま維持
+    - **末尾**: 本文末尾に `続く` がない場合は追加する（最終話を除く）
+    - **変換スクリプト例** (Python):
+        ```python
+        import re
+        separator = '\u3000' * 11 + '\uff0a' * 3
+        with open(src, 'r', encoding='utf-8') as f:
+            content = f.read()
+        content = re.sub(r'^# [^\n]*\n\n', '', content)           # タイトル削除
+        content = re.sub(r'\n\[caption\][\s\S]*', '', content)     # caption削除
+        content = content.rstrip()
+        if not content.endswith('続く'):
+            content = content + '\n\n続く\n'
+        content = content.replace('***', separator)                 # シーン区切り変換
+        content = re.sub(r'\*\*([^*]+)\*\*', r'\1', content)      # 太字マーカー削除
+        with open(dst, 'w', encoding='utf-8-sig') as f:
+            f.write(content)
+        ```
 
 - [ ] **Update Caption**: `dist/pixiv/caption.txt` を更新する。
     - **フォーマット**:
