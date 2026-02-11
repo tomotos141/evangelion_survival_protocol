@@ -72,6 +72,7 @@ Writer の出力が完了したら、以下の2つのサブエージェントを
 - キャプション更新
 - ドキュメント更新（`overall_plot_v2.md`, `foreshadowing.md`）
 - 最終検証（`Ep.\d` 残存チェック）
+- **Note**: エピソードが構造設計原則に影響する変更を含む場合（新しい伏線の導入、キャラクターの重要な行動追加等）、`sync-story-profile` スキルで Story Profile への反映要否を確認できる。
 
 ## Phase 6: Completion（完了）
 

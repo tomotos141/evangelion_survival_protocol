@@ -182,6 +182,8 @@ Writer エージェントの文体を決定する最重要ステップ。
 - 出力:
   - `docs/overall_plot.md`（軽量版）
 
+**Note**: プロット承認前に `audit-design` スキルを実行し、プロット構造が Author DNA・好み変遷と合致しているか検証できる。
+
 **Checkpoint 3**: プロット構造をユーザーが承認する。
 
 ---
@@ -200,6 +202,8 @@ Phase 2〜3 の全成果物を `.agent/profiles/{project_name}.md` に凝縮す�
 6. **世界設定** — `docs/world/` への参照リンク付きで要約
 7. **キャラクター・ダイナミクス** — Character Web マトリクス・Ghost/Lie 構造・関係性の力学を要約、`docs/characters/` を参照
 8. **禁止事項** — Author DNA §7 の共通禁止事項 + 本作固有の禁止事項
+
+**Note**: Story Profile 承認前に `audit-design` スキルを実行し、結晶化された Profile が Author DNA・好み変遷と矛盾していないか最終検証できる。
 
 **Checkpoint 4**: Story Profile をユーザーが承認する。
 

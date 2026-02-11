@@ -24,6 +24,7 @@ description: エージェントチームによるエピソードリライトパ�
    - 直前・直後のエピソード
    - `docs/foreshadowing.md`
    - 関連するキャラクター・世界観設定
+5. **Note**: 必要に応じて `check-arc-consistency` スキルを実行し、対象エピソードのキャラクターアーク不整合を事前に把握できる。
 
 ## Phase 2: Diagnostic（並列診断）— Editor + Proofreader
 
@@ -80,6 +81,7 @@ description: エージェントチームによるエピソードリライトパ�
 - キャプションの更新
 - `Ep.\d` の残存チェック
 - ドキュメント更新（伏線管理表、設定ファイル等）
+- **Note**: リライトで構造的な変更（シーン追加・削除、キャラクターの行動変更等）があった場合、`sync-story-profile` スキルで Story Profile への反映要否を確認できる。
 
 ## Phase 6: Completion（完了）
 
