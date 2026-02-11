@@ -11,9 +11,7 @@ description: 小説の品質・エンターテインメント性を分析し、�
 
 ## 作業の前に必ず読むファイル
 
-1. `.agent/skills/story_editor/SKILL.md` — 編集チェックリストの全項目
-2. `.agent/skills/author_style_check/SKILL.md` — 著者の美学チェックリスト
-3. `.agent/author_profile.md` — 著者の美学と世界観
+1. `.agent/author_profile.md` — 著者の美学と世界観
 
 ## 分析の5つの柱
 

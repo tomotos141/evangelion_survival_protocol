@@ -11,9 +11,8 @@ description: 小説の設定整合性・キャラクター一貫性・文体ル�
 
 ## 作業の前に必ず読むファイル
 
-1. `.agent/skills/consistency_check/SKILL.md` — 整合性チェックの全手順
-2. `.agent/skills/author_style_check/SKILL.md` — 著者の美学チェックリスト
-3. 対象ドラフトに関連する設定ファイル:
+1. `.agent/author_profile.md` — 著者の美学と世界観
+2. 対象ドラフトに関連する設定ファイル:
    - `docs/characters/` 配下のキャラクター設定
    - `docs/world/` 配下の世界観設定（特に `eva_abilities.md`, `hard_mode_guidelines.md`）
    - `docs/foreshadowing.md` — 伏線管理表

@@ -152,8 +152,8 @@ AI生成的なテンプレ感・説明書感を排除し、人が書いた自然
 エピソードの執筆が完了したら、以下を**自動的に**実行または提案する：
 
 1. **キャプション作成**: ドラフト末尾の `[caption]...[/caption]` ブロックとして作成する。
-2. **Pixiv版生成**: `dist/pixiv/XX_title_pixiv.txt` を手動変換で生成する。
-    - 変換ルール詳細は `write_novel_episode.md` §4 を参照。
+2. **Pixiv版生成**: `dist/pixiv/XX_title_pixiv.txt` を生成する。
+    - 変換ルールは `.claude/agents/publisher.md` を参照。
 3. **キャプション追記**: `dist/pixiv/caption.txt` に `[第X話キャプション]` を追記する。
 4. **メタ参照チェック**: `Grep` で `Ep.\d` パターンの残存を確認する。
 5. **ドキュメント更新**: `docs/overall_plot_v2.md`, `docs/foreshadowing.md` を更新する。
