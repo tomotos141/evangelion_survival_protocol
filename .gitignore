@@ -1,8 +1,11 @@
-# Agent and System files
-
+# OS
 .DS_Store
 Thumbs.db
+nul
 
-# User specific
+# Claude Code (user-local settings)
+.claude/settings.local.json
+
+# Logs and temp
 *.log
 tmp/
