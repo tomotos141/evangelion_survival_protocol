@@ -1,4 +1,4 @@
-# Short Story Plan: [Verification Test]
+# Short Story Plan: [Title]
 
 ## Core Concept
 - **Logline**: (One sentence summary)
