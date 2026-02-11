@@ -168,10 +168,14 @@ AI生成的なテンプレ感を排除し、人が書いた自然な文章にす
 - 執筆前に環境と脅威を厳密に定義し、執筆後にその変容を設定ファイルへフィードバックする。
 
 ### Agent Team（執筆チーム体制）
-- 4つの専門エージェントによる分業体制で執筆する。定義ファイルは `.claude/agents/` に配置。
+- 5つの専門エージェントによる分業体制で執筆する。定義ファイルは `.claude/agents/` に配置。
+    - **Researcher（リサーチャー）**: 市場調査・題材調査。WebSearch/WebFetch で情報を収集し、構造化レポートを出力する。
     - **Writer（執筆者）**: 本文の執筆を担当。
     - **Editor（編集者）**: エンターテインメント性の分析。Before/After形式で修正案を提示する。
     - **Proofreader（校正者）**: 設定整合性の検証。校正レポートを返す。
     - **Publisher（出版担当）**: 公開準備。Pixiv変換、キャプション更新、ドキュメント更新。
 - Editor と Proofreader は並列起動でレビューを効率化する。
-- オーケストレーション: `.claude/skills/team-write-episode.md`, `team-rewrite-episode.md`
+- オーケストレーション:
+    - `.claude/skills/team-create-original.md` — オリジナル作品の企画パイプライン（リサーチ→基盤構築→プロット→Story Profile結晶化）
+    - `.claude/skills/team-write-episode.md` — エピソード執筆パイプライン
+    - `.claude/skills/team-rewrite-episode.md` — エピソードリライトパイプライン
