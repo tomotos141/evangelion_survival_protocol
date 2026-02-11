@@ -75,4 +75,5 @@ description: 完成原稿のPixiv変換、キャプション更新、ドキュ�
 3. `dist/pixiv/caption.txt` を `Read` → `Edit` でキャプション追記
 4. ドキュメント類を `Read` → `Edit` で更新
 5. `Grep` で `Ep.\d` の残存チェック
-6. 変更ファイル一覧を報告する
+6. Pixiv版テキスト＋該当話キャプションをクリップボードにコピーする。`Bash` で以下を実行: `powershell.exe -ExecutionPolicy Bypass -File "copy_to_clip.ps1" -PixivFile "<pixiv_file>" -DraftFile "<draft_file>"`
+7. 変更ファイル一覧を報告する
