@@ -75,5 +75,10 @@ description: 完成原稿のPixiv変換、キャプション更新、ドキュ�
 3. `dist/pixiv/caption.txt` を `Read` → `Edit` でキャプション追記
 4. ドキュメント類を `Read` → `Edit` で更新
 5. `Grep` で `Ep.\d` の残存チェック
-6. Pixiv版テキスト＋該当話キャプションをクリップボードにコピーする。`Bash` で以下を実行: `powershell.exe -ExecutionPolicy Bypass -File "copy_to_clip.ps1" -PixivFile "<pixiv_file>" -DraftFile "<draft_file>"`
+6. Pixiv版テキスト＋該当話キャプションをクリップボードにコピーする。`Bash` で以下を実行:
+   ```
+   powershell -ExecutionPolicy Bypass -File "d:\VibeWorkspace\novel\copy_to_clip.ps1" "<pixiv_file_absolute_path>" "<draft_file_absolute_path>"
+   ```
+   - 引数は**位置引数**（第1引数: Pixivファイル、第2引数: ドラフトファイル）
+   - **両方とも絶対パスで渡すこと**。片方でも欠けると失敗する
 7. 変更ファイル一覧を報告する
