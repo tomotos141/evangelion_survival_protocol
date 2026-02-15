@@ -192,6 +192,8 @@ Writer エージェントの文体を決定する最重要ステップ。
 
 Phase 2〜3 の全成果物を `.agent/profiles/{project_name}.md` に凝縮する。
 
+**Note**: `scaffold-story-profile` スキルの構成ルールに従う。デザインドキュメントが完成している場合は `team-scaffold-project` で Phase 2〜4 を一括実行できる。
+
 既にワークフローで作成された雛形を上書きし、以下のセクションを埋める:
 
 1. **ジャンルと読者契約** — Phase 2a のジャンル定義・読者への約束・必須場面リストを転記する
@@ -220,7 +222,9 @@ Phase 2〜3 の全成果物を `.agent/profiles/{project_name}.md` に凝縮す�
    - Story Profile（`.agent/profiles/{project_name}.md`）
    - 第1話エピソードデザイン（`docs/episodes/ep01_title.md`）— 連載の場合
 
-2. 次のステップとして `team-write-episode` パイプラインで執筆を開始できることを案内する
+2. 次のステップを案内する:
+   - デザインドキュメントが完成済みの場合: `team-scaffold-project` で基盤ファイルを一括構築
+   - 基盤ファイルが揃っている場合: `team-write-episode` パイプラインで執筆を開始
 
 3. ユーザーが希望すればコミットを実行する
 
