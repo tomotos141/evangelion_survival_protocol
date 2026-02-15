@@ -64,6 +64,21 @@
 ### Subtext of Silence（行間の語り）
 - 本当に重要なことは、沈黙や視線の動き、あるいは破壊された風景の描写によって語らせる。
 
+### Scene & Sequel（シーンの構造骨格）
+- **Scene**（能動）: 目標(Goal) → 葛藤(Conflict) → 災い(Disaster)
+  - キャラクターが何かを求めて行動し、障害にぶつかり、状況が悪化する
+- **Sequel**（受動）: 反応(Reaction) → 苦悩(Dilemma) → 決断(Decision)
+  - 災いの結果を受けて、感情が動き、選択を迫られ、次の行動を決める
+- 全てのシーンが完全形である必要はない。ただし「目標なきシーン」「反応なき事件」は構造的に弱い
+- Battle Tempo はこの Scene の戦闘特化版。日常・対話シーンでは Scene & Sequel を骨格にする
+- Sequel の Reaction は The Heartbeat Rule と連動する——直接言語化はここで1回使う
+
+### MRU（刺激と反応の順序）
+- 外部刺激(Motivation) → 反応: 感情(Feeling) → 反射(Reflex) → 理性的行動/台詞(Rational Action)
+- この順序を崩さない。台詞を先に書いてから驚きを描写するのはNG
+- Battle Tempo の各フェーズ内でも MRU の順序を守る
+- 例: 刀が閃く(M) → 背筋が凍る(F) → 身を捩る(R) → 「——遅い」(A)
+
 ---
 
 ## 3. Prose Density（散文密度）— 30代男性読者を想定
