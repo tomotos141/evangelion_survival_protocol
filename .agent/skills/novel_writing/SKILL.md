@@ -136,15 +136,15 @@ AI生成的なテンプレ感・説明書感を排除し、人が書いた自然
 
 ### Episode Design
 
-1. 全体プロット（`docs/overall_plot_v2.md`）と前回の引き継ぎを確認する。
+1. 全体プロット（`docs/overall_plot.md`）と前回の引き継ぎを確認する。
 2. シーン構成を設計し、`docs/episodes/ep##_title.md` に保存する。
 3. ユーザーの承認を得てから執筆に進む。
 
 ### Scene Writing
 
 1. シーンの目的（ゴール）を定義する。
-2. 誰の視点（POV）かを決定する（基本：一人称シンジ/僕）。
-3. **能力・ギミックの参照**: `docs/world/eva_abilities.md` や `docs/world/hard_mode_guidelines.md` を参照する。
+2. 誰の視点（POV）かを決定する（Story Profile の視点定義に従う）。
+3. **設定の参照**: `docs/world/` 配下の関連設定ファイルを参照する。
 4. 本文を執筆する。`***` でシーンを区切る。
 
 ### Post-Drafting (脱稿後の処理)
@@ -156,4 +156,4 @@ AI生成的なテンプレ感・説明書感を排除し、人が書いた自然
     - 変換ルールは `.claude/agents/publisher.md` を参照。
 3. **キャプション追記**: `dist/pixiv/caption.txt` に `[第X話キャプション]` を追記する。
 4. **メタ参照チェック**: `Grep` で `Ep.\d` パターンの残存を確認する。
-5. **ドキュメント更新**: `docs/overall_plot_v2.md`, `docs/foreshadowing.md` を更新する。
+5. **ドキュメント更新**: `docs/overall_plot.md`, `docs/foreshadowing.md` を更新する。

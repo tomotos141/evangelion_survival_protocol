@@ -51,13 +51,13 @@ description: 完成原稿のPixiv変換、キャプション更新、ドキュ�
 
 ### 3. ドキュメント更新
 
-- `docs/overall_plot_v2.md` にエピソード概要とリンクを追記
+- `docs/overall_plot.md` にエピソード概要とリンクを追記
   - `※詳細: [ep##_title.md](./episodes/ep##_title.md)`
 - `docs/foreshadowing.md` を更新
   - 新規の謎 → `🔴 Unresolved` で追加
   - 既存伏線に進展 → `🟡 In Progress` に更新
   - 回収済み → `🟢 Resolved` に変更
-- キャラ・機体の変化があれば `docs/characters/`, `docs/world/eva_abilities.md` を更新
+- キャラ・設定の変化があれば `docs/characters/`, `docs/world/` 配下の関連ファイルを更新
 
 ### 4. 最終検証
 

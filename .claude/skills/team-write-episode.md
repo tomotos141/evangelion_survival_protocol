@@ -15,7 +15,7 @@ description: エージェントチームによるエピソード執筆パイプ�
    - `.agent/profiles/{project_name}.md` を `Read` で読み込む
    - 存在しない場合はユーザーに確認する
 3. 以下の資料を `Read` で確認する:
-   - `docs/overall_plot_v2.md` — 全体プロットと進捗
+   - `docs/overall_plot.md` — 全体プロットと進捗
    - `docs/foreshadowing.md` — 未回収の伏線
    - 直前エピソードのドラフト末尾 — 感情・身体状態の引き継ぎ
    - `docs/world/` 配下の設定ファイル
