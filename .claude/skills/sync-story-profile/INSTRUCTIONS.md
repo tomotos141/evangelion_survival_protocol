@@ -1,8 +1,3 @@
----
-name: sync-story-profile
-description: プロット・キャラクターファイル等の変更を Story Profile に反映する同期スキル。git diff から変更内容を自動検出し、Story Profile の該当セクションを更新提案する。「Profile同期」「sync profile」「プロファイル更新」で発動する。
----
-
 # Story Profile Sync（設計変更のProfile同期）
 
 設計ドキュメントの変更内容を Story Profile に反映する。

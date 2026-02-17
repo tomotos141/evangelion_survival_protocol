@@ -14,8 +14,8 @@ description: 小説の本文を執筆する専門エージェント。プロッ�
 1. `.agent/author_profile.md` — 著者の共通美学（Author DNA）
 2. `.agent/profiles/<project>.md` — 作品固有のトーン・キャラ・ルール（Story Profile）
 3. **執筆スキル** — Story Profile の `skill_ref` フィールドに従って選択:
-   - `novel_writing`（デフォルト）→ `.agent/skills/novel_writing/SKILL.md`
-   - `short_story_writing` → `.agent/skills/short_story_writing/SKILL.md`
+   - `novel_writing`（デフォルト）→ `.agent/skills/novel_writing/INSTRUCTIONS.md`
+   - `short_story_writing` → `.agent/skills/short_story_writing/INSTRUCTIONS.md`
    - `skill_ref` が未指定の場合は `novel_writing` を読む
 4. 指示されたエピソードデザイン（`docs/episodes/ep##_title.md`）またはSSプランファイル
 5. 直前エピソードのドラフト末尾 — キャラの感情・身体状態の引き継ぎ（連載の場合）

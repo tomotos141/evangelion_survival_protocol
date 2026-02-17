@@ -1,8 +1,3 @@
----
-name: audit-design
-description: 設計ドキュメント（プロット等）を Author DNA・Story Profile・作者の好み変遷と突合し、乖離点を構造化レポートで出力する設計監査スキル。「設計監査」「audit design」「プロットと好み一致してる？」で発動する。
----
-
 # Design Audit（設計監査）
 
 設計ドキュメントが現在の著者美学と整合しているかを監査し、構造化レポートを出力する。

@@ -1,8 +1,3 @@
----
-name: scaffold-story-profile
-description: デザインドキュメントから Story Profile を生成するスキル。team-scaffold-project から呼び出されるほか、単体でも使用可能。
----
-
 # Story Profile 生成スキル
 
 デザインドキュメントを入力として、Writer/Editor が執筆時に参照する運用ドキュメントとしての Story Profile を生成する。

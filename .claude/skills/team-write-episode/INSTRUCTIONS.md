@@ -1,8 +1,3 @@
----
-name: team-write-episode
-description: エージェントチームによるエピソード執筆パイプライン。Writer, Editor, Proofreader, Publisher の4エージェントを順次・並列に活用して新規エピソードを執筆する。「チームで書いて」「チーム執筆」「team write」で発動する。
----
-
 # Team Episode Writing Pipeline
 
 エージェントチームを使用してエピソードを執筆するオーケストレーション手順。

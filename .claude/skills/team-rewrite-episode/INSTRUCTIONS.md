@@ -1,8 +1,3 @@
----
-name: team-rewrite-episode
-description: エージェントチームによるエピソードリライトパイプライン。既存原稿を Editor と Proofreader が並列診断し、Writer がリライトを実施する。「チームでリライト」「チーム推敲」「team rewrite」で発動する。
----
-
 # Team Episode Rewrite Pipeline
 
 エージェントチームを使用して既存エピソードをリライトするオーケストレーション手順。

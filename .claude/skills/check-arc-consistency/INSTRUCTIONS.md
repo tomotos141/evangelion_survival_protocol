@@ -1,8 +1,3 @@
----
-name: check-arc-consistency
-description: キャラクターの Arc（Status Evolution Log）とエピソードのシーン構成を突合し、不整合を検出するスキル。「整合性チェック」「arc check」「アーク確認」で発動する。
----
-
 # Arc Consistency Check（アーク整合性チェック）
 
 キャラクターファイルの Status Evolution Log と、エピソードのシーン構成・構造的仕掛けを突合し、不整合を検出する。

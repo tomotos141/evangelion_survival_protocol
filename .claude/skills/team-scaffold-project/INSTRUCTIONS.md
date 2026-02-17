@@ -1,8 +1,3 @@
----
-name: team-scaffold-project
-description: デザインドキュメントからプロジェクト基盤を一括構築するオーケストレーション。ディレクトリ・Story Profile・キャラクターファイル・世界観設定・全体プロット・伏線管理表を依存関係に従って作成する。「プロジェクトを構築して」「scaffold」「基盤を作って」で発動する。
----
-
 # Project Scaffold Pipeline
 
 デザインドキュメントが完成した状態から、プロジェクトの基盤ファイル一式を構築するオーケストレーション手順。
@@ -54,7 +49,7 @@ Phase 1 完了後、以下の3つを **並列で** 起動する。
 指示に含める情報:
 - デザインドキュメントのパス
 - プロジェクト名
-- `scaffold-story-profile` スキルの内容（`.claude/skills/scaffold-story-profile.md`）
+- `scaffold-story-profile` スキルの内容（`.claude/skills/scaffold-story-profile/INSTRUCTIONS.md`）
 
 出力: `.agent/profiles/{project}.md`
 
@@ -65,7 +60,7 @@ Phase 1 完了後、以下の3つを **並列で** 起動する。
 指示に含める情報:
 - デザインドキュメントのパス
 - プロジェクトパス
-- `scaffold-characters` スキルの内容（`.claude/skills/scaffold-characters.md`）
+- `scaffold-characters` スキルの内容（`.claude/skills/scaffold-characters/INSTRUCTIONS.md`）
 
 出力: `projects/{project}/docs/characters/*.md`
 
@@ -76,7 +71,7 @@ Phase 1 完了後、以下の3つを **並列で** 起動する。
 指示に含める情報:
 - デザインドキュメントのパス
 - プロジェクトパス
-- `scaffold-world` スキルの内容（`.claude/skills/scaffold-world.md`）
+- `scaffold-world` スキルの内容（`.claude/skills/scaffold-world/INSTRUCTIONS.md`）
 
 出力: `projects/{project}/docs/world/*.md`
 
@@ -96,7 +91,7 @@ Phase 2 完了後、以下の2つを **並列で** 起動する。
 - デザインドキュメントのパス
 - プロジェクトパス
 - Phase 2 で作成された Story Profile のパス
-- `scaffold-plot` スキルの内容（`.claude/skills/scaffold-plot.md`）
+- `scaffold-plot` スキルの内容（`.claude/skills/scaffold-plot/INSTRUCTIONS.md`）
 
 出力: `projects/{project}/docs/overall_plot.md`
 
@@ -107,7 +102,7 @@ Phase 2 完了後、以下の2つを **並列で** 起動する。
 指示に含める情報:
 - デザインドキュメントのパス
 - プロジェクトパス
-- `scaffold-foreshadowing` スキルの内容（`.claude/skills/scaffold-foreshadowing.md`）
+- `scaffold-foreshadowing` スキルの内容（`.claude/skills/scaffold-foreshadowing/INSTRUCTIONS.md`）
 
 出力: `projects/{project}/docs/foreshadowing.md`
 

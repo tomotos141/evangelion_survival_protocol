@@ -202,6 +202,6 @@ AI生成的なテンプレ感を排除し、人が書いた自然な文章にす
     - **Publisher（出版担当）**: 公開準備。Pixiv変換、キャプション更新、ドキュメント更新。
 - Editor と Proofreader は並列起動でレビューを効率化する。
 - オーケストレーション:
-    - `.claude/skills/team-create-original.md` — オリジナル作品の企画パイプライン（リサーチ→基盤構築→プロット→Story Profile結晶化）
-    - `.claude/skills/team-write-episode.md` — エピソード執筆パイプライン
-    - `.claude/skills/team-rewrite-episode.md` — エピソードリライトパイプライン
+    - `.claude/skills/team-create-original/` — オリジナル作品の企画パイプライン（リサーチ→基盤構築→プロット→Story Profile結晶化）
+    - `.claude/skills/team-write-episode/` — エピソード執筆パイプライン
+    - `.claude/skills/team-rewrite-episode/` — エピソードリライトパイプライン
