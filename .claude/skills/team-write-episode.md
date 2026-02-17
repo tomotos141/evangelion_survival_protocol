@@ -69,9 +69,10 @@ Writer の出力が完了したら、以下の2つのサブエージェントを
 
 **publisher** サブエージェントに委任する:
 - Pixiv版生成（UTF-8 BOM）
+- ハーメルン版生成（UTF-8、BOMなし）
 - キャプション更新
 - ドキュメント更新（`overall_plot_v2.md`, `foreshadowing.md`）
-- 最終検証（`Ep.\d` 残存チェック）
+- 最終検証（`Ep.\d` 残存チェック — Pixiv版・ハーメルン版の両方）
 - **Note**: エピソードが構造設計原則に影響する変更を含む場合（新しい伏線の導入、キャラクターの重要な行動追加等）、`sync-story-profile` スキルで Story Profile への反映要否を確認できる。
 
 ## Phase 6: Completion（完了）
@@ -79,6 +80,7 @@ Writer の出力が完了したら、以下の2つのサブエージェントを
 1. 全成果物の一覧を提示する:
    - `drafts/XX_title.md`（ドラフト）
    - `dist/pixiv/XX_title_pixiv.txt`（Pixiv版）
+   - `dist/hameln/XX_title_hameln.txt`（ハーメルン版）
    - `dist/pixiv/caption.txt`（キャプション更新）
    - 更新されたドキュメント類
 2. コミットの要否をユーザーに確認する
