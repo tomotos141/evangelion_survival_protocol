@@ -4,6 +4,16 @@
 > 作品固有の設定（トーン、キャラクター、テーマ等）は `.agent/profiles/<project>.md` に分離されている。
 > エージェントは本ファイルと作品プロファイルの **両方** を読み込んでから作業を開始すること。
 
+## Table of Contents
+1. Core Techniques（技法の核心）
+2. Narrative Style（語り口）— Scene & Sequel, MRU 含む
+3. Prose Density（散文密度）
+4. Natural Prose Rules（AI臭の排除）
+5. Structural Preferences（構造的嗜好）
+6. Battle & Machine Writing（戦闘と機体の描写）
+7. Forbidden（共通禁止事項）
+8. Workflow（運用）
+
 ---
 
 ## 1. Core Techniques（技法の核心）
