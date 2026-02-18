@@ -78,24 +78,37 @@ Writer の出力が完了したら、以下の2つのサブエージェントを
 - [ ] Writer による修正適用完了
 - [ ] 修正後のドラフト保存済み
 
-## Phase 5: Publishing（公開準備）— Publisher Agent
+## Phase 5: Publishing（公開準備）— Publisher Agents (並列) + Team Lead
 
 修正が完了し、ユーザーの最終OKが出たら:
 
-**publisher** サブエージェントに委任する:
-- Pixiv版生成（UTF-8 BOM）
-- ハーメルン版生成（UTF-8、BOMなし）
-- キャプション更新
-- ドキュメント更新（`overall_plot_v2.md`, `foreshadowing.md`）
-- 最終検証（`Ep.\d` 残存チェック — Pixiv版・ハーメルン版の両方）
-- **Note**: エピソードが構造設計原則に影響する変更を含む場合（新しい伏線の導入、キャラクターの重要な行動追加等）、`sync-story-profile` スキルで Story Profile への反映要否を確認できる。
+### 5a. Pixiv/Hameln 並列生成
+
+2つの **publisher** サブエージェントを `run_in_background=True` で**並列起動**する:
+
+- **Pixiv Publisher**: 「ドラフト `{path}` からPixiv版を全面再生成してください。出力先: `dist/pixiv/XX_title_pixiv.txt`。`Ep.\d` 残存チェックも実行してください」
+- **Hameln Publisher**: 「ドラフト `{path}` からハーメルン版を全面再生成してください。出力先: `dist/hameln/XX_title_hameln.txt`。`Ep.\d` 残存チェックも実行してください」
+
+両方の完了を待つ。
+
+### 5b. 共通処理（Team Lead が実施）
+
+両方の Publisher が完了した後、Team Lead が以下を実行する:
+
+1. **キャプション更新**: `dist/pixiv/caption.txt` を `Read` → `Edit`（フォーマットは `publisher.md` §2 参照）
+2. **ドキュメント更新**: `overall_plot.md`, `foreshadowing.md` 等を必要に応じて更新
+3. **クリップボードコピー**: `Bash` で以下を実行:
+   ```
+   powershell -ExecutionPolicy Bypass -File "d:\VibeWorkspace\novel\copy_to_clip.ps1" "<pixiv_file_absolute_path>" "<draft_file_absolute_path>"
+   ```
+4. **Note**: エピソードが構造設計原則に影響する変更を含む場合、`sync-story-profile` スキルで Story Profile への反映要否を確認できる。
 
 ### Phase 5 チェックリスト
-- [ ] Pixiv版生成 (UTF-8 BOM)
-- [ ] Hameln版生成 (UTF-8, BOMなし)
-- [ ] キャプション更新
-- [ ] ドキュメント更新 (foreshadowing.md 等)
-- [ ] Ep.\d 残存チェック通過
+- [ ] Pixiv版の並列生成完了 + Ep.\d チェック通過
+- [ ] Hameln版の並列生成完了 + Ep.\d チェック通過
+- [ ] キャプション更新完了
+- [ ] ドキュメント更新完了
+- [ ] クリップボードコピー完了
 
 ## Phase 6: Completion（完了）
 
