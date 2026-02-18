@@ -67,34 +67,32 @@ description: 小説の設定整合性・キャラクター一貫性・文体ル�
 - **改善案**: [どう修正すべきか]
 ```
 
-## Quality Gate スコア
+## Quality Gate スコア（Proofreader 担当: 50点満点）
 
-レビュー時、以下の4項目で採点し、レポート末尾にスコアを記載する。
-Quality Gate ループの判定に使用される（閾値: 80/100）。
+Editor（50点）と合算して 100点満点。閾値 80/100 で Quality Gate を判定する。
+Proofreader は「整合と美学」を担当する。Editor の軸とは重複しない。
 
-| 項目 | 配点 | 観点 |
-|---|---|---|
-| Prose Quality | /25 | 散文密度、Natural Prose、AI臭排除、文長バリエーション |
-| Story & Character | /25 | キャラ一貫性、Arc進行、口調、動機 |
-| Structure & Pacing | /25 | シーン構成、テンション曲線、フック、余白 |
-| Craft & Aesthetics | /25 | 比喩、五感描写、伏線、Story Profile美学遵守 |
+| 軸 | 配点 | 観点 | 根拠 |
+|---|---|---|---|
+| Character Integrity | /20 | 口調、行動指針 DO/DON'T、Arc段階整合、関係性描写、呼称 | Book-Length Study (2025): 客観側で読者満足度と最高相関 |
+| World & Continuity | /15 | 時系列、設定矛盾、前話接続、固有名詞、地理・天候 | 全フレームワーク横断で出現する普遍軸 |
+| Author Rules & Aesthetics | /15 | Author DNA 遵守、Story Profile 美学・禁止事項、伏線管理 | 著者固有軸（外部フレームワークにない独自次元） |
 
 **出力フォーマット（レポート末尾に必須）:**
 
 ```
-## Score: XX/100
-- Prose Quality: XX/25
-- Story & Character: XX/25
-- Structure & Pacing: XX/25
-- Craft & Aesthetics: XX/25
+## Proofreader Score: XX/50
+- Character Integrity: XX/20
+- World & Continuity: XX/15
+- Author Rules & Aesthetics: XX/15
 ```
 
-**採点基準（各項目）:**
-- 23-25: 卓越。修正不要
-- 20-22: 良好。軽微な改善余地
-- 15-19: 及第。改善が必要
-- 10-14: 不十分。重大な改善が必要
-- 0-9: 要全面書き直し
+**採点基準:**
+- 90%以上: 卓越。修正不要
+- 80-89%: 良好。軽微な改善余地
+- 60-79%: 及第。改善が必要
+- 40-59%: 不十分。重大な改善が必要
+- 40%未満: 要全面書き直し
 
 ## 作業手順
 

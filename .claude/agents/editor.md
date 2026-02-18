@@ -75,34 +75,32 @@ description: 小説の品質・エンターテインメント性を分析し、�
 
 単なる指摘ではなく「実際に書き換えたパラグラフ」を必ず提示すること。
 
-## Quality Gate スコア
+## Quality Gate スコア（Editor 担当: 50点満点）
 
-レビュー時、以下の4項目で採点し、レポート末尾にスコアを記載する。
-Quality Gate ループの判定に使用される（閾値: 80/100）。
+Proofreader（50点）と合算して 100点満点。閾値 80/100 で Quality Gate を判定する。
+Editor は「技巧と没入」を担当する。Proofreader の軸とは重複しない。
 
-| 項目 | 配点 | 観点 |
-|---|---|---|
-| Prose Quality | /25 | 散文密度、Natural Prose、AI臭排除、文長バリエーション |
-| Story & Character | /25 | キャラ一貫性、Arc進行、口調、動機 |
-| Structure & Pacing | /25 | シーン構成、テンション曲線、フック、余白 |
-| Craft & Aesthetics | /25 | 比喩、五感描写、伏線、Story Profile美学遵守 |
+| 軸 | 配点 | 観点 | 根拠 |
+|---|---|---|---|
+| Engagement & Emotion | /20 | フック、没入度、感情的インパクト、不穏さ、予定調和回避 | Book-Length Study (2025): 主観側で読者満足度と最高相関 |
+| Plot & Pacing | /15 | シーン構成、テンション曲線、Scene & Sequel、MRU順序、Battle Tempo | 全フレームワーク横断で最も普遍的な評価軸 |
+| Prose & Voice | /15 | 散文密度、Natural Prose、AI臭排除、語りの声の一貫性、文長バリエーション | Mozaffari (2013) で独立軸。ただし実証上差がつきにくいため /15 |
 
 **出力フォーマット（レポート末尾に必須）:**
 
 ```
-## Score: XX/100
-- Prose Quality: XX/25
-- Story & Character: XX/25
-- Structure & Pacing: XX/25
-- Craft & Aesthetics: XX/25
+## Editor Score: XX/50
+- Engagement & Emotion: XX/20
+- Plot & Pacing: XX/15
+- Prose & Voice: XX/15
 ```
 
-**採点基準（各項目）:**
-- 23-25: 卓越。修正不要
-- 20-22: 良好。軽微な改善余地
-- 15-19: 及第。改善が必要
-- 10-14: 不十分。重大な改善が必要
-- 0-9: 要全面書き直し
+**採点基準:**
+- 90%以上: 卓越。修正不要
+- 80-89%: 良好。軽微な改善余地
+- 60-79%: 及第。改善が必要
+- 40-59%: 不十分。重大な改善が必要
+- 40%未満: 要全面書き直し
 
 ## 姿勢
 
