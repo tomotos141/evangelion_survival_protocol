@@ -16,7 +16,7 @@
         {"name": "VAE", "type": "VAE", "links": [8], "slot_index": 2}
       ],
       "properties": {"Node name for S&R": "CheckpointLoaderSimple"},
-      "widgets_values": ["juggernautXL_v9.safetensors"]
+      "widgets_values": ["juggernautxlRagnarok.k3mq.safetensors"]
     },
     {
       "id": 2,
@@ -34,7 +34,7 @@
       ],
       "title": "POSITIVE — Pixiv Cover (1200x1600)",
       "properties": {"Node name for S&R": "CLIPTextEncode"},
-      "widgets_values": ["close-up of japanese katana tsuka (hilt) in heavy rain, water droplets on iron tsuba guard, rust patina, dark atmospheric lighting, blood stains dried on wrapping, traditional japanese aesthetic, cinematic, dark moody color palette, shallow depth of field, 8k detail"],
+      "widgets_values": ["close-up of nihonto japanese katana tsuka hilt wrapped in black ito cord over ray skin samegawa, heavy rain, water droplets on round iron tsuba handguard, rust patina, dark atmospheric lighting, dried blood on silk wrapping, traditional japanese edo period aesthetic, cinematic, dark moody color palette, shallow depth of field, 8k detail, wabi-sabi"],
       "color": "#232",
       "bgcolor": "#353"
     },
@@ -54,7 +54,7 @@
       ],
       "title": "NEGATIVE",
       "properties": {"Node name for S&R": "CLIPTextEncode"},
-      "widgets_values": ["text, watermark, signature, anime, cartoon, illustration, person, face, hands, bright colors, cheerful, modern, plastic"],
+      "widgets_values": ["text, watermark, signature, anime, cartoon, illustration, person, face, hands, bright colors, cheerful, modern, plastic, western sword, european sword, longsword, broadsword, medieval, knight, crossguard, straight blade"],
       "color": "#322",
       "bgcolor": "#533"
     },

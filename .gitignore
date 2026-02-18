@@ -9,3 +9,7 @@ nul
 # Logs and temp
 *.log
 tmp/
+
+# Generated images (ComfyUI)
+docs/marketing/comfyui/output/
+docs/marketing/comfyui/*.png

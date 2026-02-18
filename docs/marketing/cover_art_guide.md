@@ -203,3 +203,4 @@ text, watermark, signature, anime, cartoon, illustration, person, bright colors,
 ---
 
 > 参照: `.agent/profiles/battousai.md` §1（Stained Steel 美学）、`docs/marketing/pixiv_optimization.md`（タグ・キャプション設計）
+> プロンプト設計スキル: `.claude/skills/image-prompt/` — SDXL プロンプトエンジニアリングのベストプラクティス・語彙辞書

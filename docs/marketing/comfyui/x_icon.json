@@ -16,7 +16,7 @@
         {"name": "VAE", "type": "VAE", "links": [8], "slot_index": 2}
       ],
       "properties": {"Node name for S&R": "CheckpointLoaderSimple"},
-      "widgets_values": ["juggernautXL_v9.safetensors"]
+      "widgets_values": ["juggernautxlRagnarok.k3mq.safetensors"]
     },
     {
       "id": 2,
@@ -34,7 +34,7 @@
       ],
       "title": "POSITIVE — X Icon (1024x1024)",
       "properties": {"Node name for S&R": "CLIPTextEncode"},
-      "widgets_values": ["extreme macro close-up of japanese sword tsuba guard, intricate iron carving, dark rust patina, aged metal texture, centered composition, dark background, dramatic side lighting, 8k detail"],
+      "widgets_values": ["extreme macro close-up of japanese nihonto katana round tsuba handguard, intricate iron carving, dark rust patina, aged metal texture, centered composition, dark background, dramatic side lighting, 8k detail, wabi-sabi, edo period"],
       "color": "#232",
       "bgcolor": "#353"
     },
@@ -54,7 +54,7 @@
       ],
       "title": "NEGATIVE",
       "properties": {"Node name for S&R": "CLIPTextEncode"},
-      "widgets_values": ["text, watermark, signature, anime, cartoon, illustration, person, bright colors, modern"],
+      "widgets_values": ["text, watermark, signature, anime, cartoon, illustration, person, bright colors, modern, western sword, european sword, longsword, broadsword, medieval, knight, crossguard"],
       "color": "#322",
       "bgcolor": "#533"
     },

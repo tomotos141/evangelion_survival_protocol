@@ -16,7 +16,7 @@
         {"name": "VAE", "type": "VAE", "links": [8], "slot_index": 2}
       ],
       "properties": {"Node name for S&R": "CheckpointLoaderSimple"},
-      "widgets_values": ["juggernautXL_v9.safetensors"]
+      "widgets_values": ["juggernautxlRagnarok.k3mq.safetensors"]
     },
     {
       "id": 2,
@@ -54,7 +54,7 @@
       ],
       "title": "NEGATIVE",
       "properties": {"Node name for S&R": "CLIPTextEncode"},
-      "widgets_values": ["text, watermark, signature, anime, cartoon, illustration, person, face, bright colors, modern buildings, neon"],
+      "widgets_values": ["text, watermark, signature, anime, cartoon, illustration, person, face, bright colors, modern buildings, neon, western, european, medieval"],
       "color": "#322",
       "bgcolor": "#533"
     },
