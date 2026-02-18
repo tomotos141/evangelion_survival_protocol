@@ -1,0 +1,189 @@
+<mxfile host="app.diagrams.net" modified="2026-02-18" agent="Claude" type="device">
+  <diagram name="team-rewrite-episode" id="rewrite-pipeline">
+    <mxGraphModel dx="1200" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ===== Title ===== -->
+        <mxCell id="title" value="&lt;font style=&quot;font-size:18px&quot;&gt;&lt;b&gt;team-rewrite-episode Pipeline&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="10" width="340" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Phase 1: Preparation ===== -->
+        <mxCell id="p1" value="&lt;b&gt;Phase 1: Preparation&lt;/b&gt;&lt;br&gt;Team Lead&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;ドラフト読み込み / Story Profile / リライト重点確認&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="250" y="60" width="300" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow P1 → P2 -->
+        <mxCell id="a_p1_p2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="p1" target="diag_group" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Phase 2: Diagnostic (Group) ===== -->
+        <mxCell id="diag_group" value="&lt;b&gt;Phase 2: Diagnostic&lt;/b&gt;　（ベースラインスコア記録）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="170" width="700" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- Editor (diagnostic) -->
+        <mxCell id="editor_d" value="&lt;b&gt;Editor&lt;/b&gt; (50pt)&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Engagement /20 | Plot /15 | Prose /15&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="215" width="230" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Proofreader (diagnostic) -->
+        <mxCell id="proof_d" value="&lt;b&gt;Proofreader&lt;/b&gt; (50pt)&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Character /20 | World /15 | Rules /15&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="215" width="230" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Parallel label -->
+        <mxCell id="parallel_d" value="&lt;font style=&quot;font-size:11px&quot;&gt;⇄ 並列 ⇄&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="230" width="100" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow P2 → P3 -->
+        <mxCell id="a_p2_p3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="diag_group" target="p3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Phase 3: Proposal ===== -->
+        <mxCell id="p3" value="&lt;b&gt;Phase 3: Proposal&lt;/b&gt;&lt;br&gt;Team Lead&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;レポート統合 / Before·After修正案 / ユーザー承認&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="250" y="340" width="300" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow P3 → P4 -->
+        <mxCell id="a_p3_p4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="p3" target="p4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Phase 4: Rewrite ===== -->
+        <mxCell id="p4" value="&lt;b&gt;Phase 4: Rewrite&lt;/b&gt;&lt;br&gt;Writer Agent&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;承認された修正を適用&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="250" y="450" width="300" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow P4 → QG -->
+        <mxCell id="a_p4_qg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="p4" target="editor_q" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Phase 5: Quality Gate (Group) ===== -->
+        <mxCell id="qg_group" value="&lt;b&gt;Phase 5: Quality Gate&lt;/b&gt;　（最大3回ループ）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="555" width="700" height="280" as="geometry"/>
+        </mxCell>
+
+        <!-- Editor (QG) -->
+        <mxCell id="editor_q" value="&lt;b&gt;Editor&lt;/b&gt; (50pt)&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Engagement &amp;amp; Emotion /20&lt;br&gt;Plot &amp;amp; Pacing /15&lt;br&gt;Prose &amp;amp; Voice /15&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="600" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Proofreader (QG) -->
+        <mxCell id="proof_q" value="&lt;b&gt;Proofreader&lt;/b&gt; (50pt)&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Character Integrity /20&lt;br&gt;World &amp;amp; Continuity /15&lt;br&gt;Author Rules /15&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="510" y="600" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Parallel label (QG) -->
+        <mxCell id="parallel_q" value="&lt;font style=&quot;font-size:11px&quot;&gt;⇄ 並列 ⇄&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="625" width="100" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow Editor → Diamond -->
+        <mxCell id="a_eq_dia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="editor_q" target="diamond_q" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow Proofreader → Diamond -->
+        <mxCell id="a_pq_dia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="proof_q" target="diamond_q" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Score Decision Diamond -->
+        <mxCell id="diamond_q" value="&lt;b&gt;合計 ≥ 80?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="710" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Writer Revise (loop) -->
+        <mxCell id="writer_rev" value="&lt;b&gt;Writer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Critical/High&lt;br&gt;課題を修正&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="570" y="720" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Diamond → Writer (NO) -->
+        <mxCell id="a_dia_wr" value="&lt;font color=&quot;#cc0000&quot;&gt;&lt;b&gt;NO&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="diamond_q" target="writer_rev" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Writer → back to E+P (loop arrow) -->
+        <mxCell id="a_wr_loop" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="writer_rev" target="proof_q" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="750"/>
+              <mxPoint x="740" y="640"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Diamond → Phase 6 (YES) -->
+        <mxCell id="a_dia_p6" value="&lt;font color=&quot;#006600&quot;&gt;&lt;b&gt;YES&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="diamond_q" target="pub_group" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Phase 6: Post-processing (Group) ===== -->
+        <mxCell id="pub_group" value="&lt;b&gt;Phase 6: Post-processing&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="870" width="700" height="170" as="geometry"/>
+        </mxCell>
+
+        <!-- Pixiv Publisher -->
+        <mxCell id="pub_pixiv" value="&lt;b&gt;Pixiv Publisher&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;dist/pixiv/&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="910" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Hameln Publisher -->
+        <mxCell id="pub_hameln" value="&lt;b&gt;Hameln Publisher&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;dist/hameln/&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="510" y="910" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Parallel label for publishers -->
+        <mxCell id="parallel_pub" value="&lt;font style=&quot;font-size:11px&quot;&gt;⇄ 並列 ⇄&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="922" width="100" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Team Lead tasks -->
+        <mxCell id="tl_tasks" value="&lt;font style=&quot;font-size:10px&quot;&gt;Team Lead: キャプション更新 / ドキュメント更新 / クリップボードコピー&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="130" y="980" width="540" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow pub_group → P7 -->
+        <mxCell id="a_pub_p7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="pub_group" target="p7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Phase 7: Completion ===== -->
+        <mxCell id="p7" value="&lt;b&gt;Phase 7: Completion&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;スコア推移（ベースライン→最終）/ コミット確認&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1080" width="300" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Legend ===== -->
+        <mxCell id="leg_title" value="&lt;b&gt;凡例&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1160" width="50" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_tl" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1190" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_tl_txt" value="&lt;font style=&quot;font-size:10px&quot;&gt;Team Lead&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1190" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_ag" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="1190" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_ag_txt" value="&lt;font style=&quot;font-size:10px&quot;&gt;Agent (Writer/Editor/Proofreader/Publisher)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="210" y="1190" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_dec" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="510" y="1185" width="25" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_dec_txt" value="&lt;font style=&quot;font-size:10px&quot;&gt;判定 (Quality Gate)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="545" y="1190" width="140" height="20" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
