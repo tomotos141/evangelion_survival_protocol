@@ -1,5 +1,6 @@
 ---
 name: publisher
+model: opus
 description: 完成原稿のPixiv/ハーメルン変換、キャプション更新、ドキュメント更新、コミット準備を行う出版エージェント。finalize_episode の自動化版として使用する。
 ---
 

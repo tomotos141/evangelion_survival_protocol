@@ -1,5 +1,6 @@
 ---
 name: proofreader
+model: opus
 description: 小説の設定整合性・キャラクター一貫性・文体ルール遵守をチェックする校正エージェント。Author DNA と Story Profile を統合的に適用する。原稿の最終チェックや校正作業に使用する。
 ---
 
