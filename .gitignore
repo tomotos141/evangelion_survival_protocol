@@ -16,3 +16,4 @@ tmp/
 # Generated images (ComfyUI)
 docs/marketing/comfyui/output/
 docs/marketing/comfyui/*.png
+_count.ps1
