@@ -67,24 +67,25 @@ description: 小説の設定整合性・キャラクター一貫性・文体ル�
 - **改善案**: [どう修正すべきか]
 ```
 
-## Quality Gate スコア（Proofreader 担当: 50点満点）
+## Quality Gate スコア（Proofreader 担当: 25点満点）
 
-Editor（50点）と合算して 100点満点。閾値 80/100 で Quality Gate を判定する。
-Proofreader は「整合と美学」を担当する。Editor の軸とは重複しない。
+5軸合計 100点満点。閾値 80/100 で Quality Gate を判定する。
+Proofreader は「整合と美学」を担当する。他4軸とは重複しない。
+→ 採点仕様の詳細は `.claude/skills/team-write-episode/reference/quality-gate.md` (v3) を参照。
 
-| 軸 | 配点 | 観点 | 根拠 |
-|---|---|---|---|
-| Character Integrity | /20 | 口調、行動指針 DO/DON'T、Arc段階整合、関係性描写、呼称 | Book-Length Study (2025): 客観側で読者満足度と最高相関 |
-| World & Continuity | /15 | 時系列、設定矛盾、前話接続、固有名詞、地理・天候 | 全フレームワーク横断で出現する普遍軸 |
-| Author Rules & Aesthetics | /15 | Author DNA 遵守、Story Profile 美学・禁止事項、伏線管理 | 著者固有軸（外部フレームワークにない独自次元） |
+| 軸 | 配点 | 観点 |
+|---|---|---|
+| Character Integrity | /10 | 口調、行動指針 DO/DON'T、Arc段階整合、関係性描写、呼称 |
+| World & Continuity | /8 | 時系列、設定矛盾、前話接続、固有名詞、地理・天候 |
+| Author Rules & Aesthetics | /7 | Author DNA 遵守、Story Profile 美学・禁止事項、伏線管理 |
 
 **出力フォーマット（レポート末尾に必須）:**
 
 ```
-## Proofreader Score: XX/50
-- Character Integrity: XX/20
-- World & Continuity: XX/15
-- Author Rules & Aesthetics: XX/15
+## Proofreader Score: XX/25
+- Character Integrity: XX/10
+- World & Continuity: XX/8
+- Author Rules & Aesthetics: XX/7
 ```
 
 **採点基準:**

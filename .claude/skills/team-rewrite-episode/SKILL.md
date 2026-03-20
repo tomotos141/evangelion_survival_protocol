@@ -9,7 +9,7 @@ Agent team episode rewrite pipeline. Editor + Proofreader parallel diagnosis, th
 
 **スキルの場所**: `.claude/skills/team-rewrite-episode/`
 **参照ファイル**:
-- `../team-write-episode/reference/quality-gate.md` — Quality Gate v2 採点仕様（共有）
+- `../team-write-episode/reference/quality-gate.md` — Quality Gate v3 採点仕様（5軸 100pt、共有）
 - `../team-write-episode/reference/actionlog-template.md` — ACTIONLOG 記録テンプレート（共有）
 - `reference/actions.jsonl` — 実行ログ（自動蓄積）
 
@@ -40,41 +40,56 @@ Agent team episode rewrite pipeline. Editor + Proofreader parallel diagnosis, th
 - [ ] リライトの重点をユーザーと確認済み
 - [ ] 関連設定ファイル確認済み
 
-## Phase 2: Diagnostic（並列診断）— Editor + Proofreader
+## Phase 2: Diagnostic（5軸並列診断）
 
-以下の2つのサブエージェントを **並列で** 起動する。**スコアも必須**（ベースラインとして記録）。各エージェントは**自分の専門軸のみ**を採点する（重複なし）。
+以下のサブエージェントを **全て並列で** 起動する。**スコアも必須**（ベースラインとして記録）。各エージェントは**自分の専門軸のみ**を採点する（重複なし）。
 
-→ 採点仕様の詳細は `../team-write-episode/reference/quality-gate.md` を参照。
+→ 採点仕様の詳細は `../team-write-episode/reference/quality-gate.md` (v3) を参照。
 
-### editor サブエージェント（50点満点）
+### editor サブエージェント（25点満点）
 - 対象: リライト対象のドラフト
-- 採点軸: Engagement & Emotion /20, Plot & Pacing /15, Prose & Voice /15
+- 採点軸: Engagement & Emotion /10, Plot & Pacing /8, Prose & Voice /7
 - 診断観点:
   - 文体チェック（Story Profile のトーン維持）
   - ペース配分と描写密度
   - **散文密度チェック**: 一文一行のスタッカートがないか、段落が3〜5文で構成されているか、文長にバリエーションがあるか、余白が厳選されているか
   - **文字数チェック**: 7,000文字未満の場合は「肉付け不足」として報告
   - 読者没入度（引き、ツイスト、不穏さ）
-  - Natural Prose Check（AI臭の排除）
-- **必ず 50点満点のスコアを含めること**（editor.md の Quality Gate スコア参照）
+- **必ず 25点満点のスコアを含めること**（editor.md の Quality Gate スコア参照）
 
-### proofreader サブエージェント（50点満点）
+### proofreader サブエージェント（25点満点）
 - 対象: 同じドラフト
-- 採点軸: Character Integrity /20, World & Continuity /15, Author Rules & Aesthetics /15
+- 採点軸: Character Integrity /10, World & Continuity /8, Author Rules & Aesthetics /7
 - 診断観点:
   - 設定整合性（キャラ・世界観・時系列）
   - 著者美学チェック（Author DNA + Story Profile の美学）
   - Story Profile 禁止事項チェック
   - 伏線管理状況の確認
   - キャプションの有無・内容確認
-- **必ず 50点満点のスコアを含めること**（proofreader.md の Quality Gate スコア参照）
+- **必ず 25点満点のスコアを含めること**（proofreader.md の Quality Gate スコア参照）
 
-両方の完了を待つ。ベースラインスコア（合計）を記録する。
+### first-reader サブエージェント（20点満点）
+- 対象: 同じドラフト（**設定資料は読まない**）
+- 採点軸: Hook /8, Retention /6, Next-want /6
+- **必ず 20点満点のスコアを含めること**
+
+### mystery-auditor サブエージェント（15点満点）— ミステリー要素がある場合のみ
+- 対象: 同じドラフト
+- 採点軸: Clue Fairplay /5, Rule Consistency /5, Secret Management /5
+- 参照: `docs/mystery_design.md`, `docs/world/core_rules.md`
+- **ミステリー要素がない場合はスキップし、15pt を Editor(+8) と Proofreader(+7) に再配分**
+- **必ず 15点満点のスコアを含めること**
+
+### freshness-checker サブエージェント（15点満点）
+- 対象: 同じドラフト
+- 採点軸: Pattern /5, Template /5, Explanation Economy /5
+- **必ず 15点満点のスコアを含めること**
+
+全員の完了を待つ。ベースラインスコア（合計）を記録する。
 
 ### Phase 2 チェックリスト
-- [ ] Editor レポート + スコア受領
-- [ ] Proofreader レポート + スコア受領
-- [ ] ベースラインスコア記録: Editor XX/50 + Proofreader XX/50 = 合計 XX/100
+- [ ] 全エージェントのレポート + スコア受領
+- [ ] ベースラインスコア記録: E XX/25 + P XX/25 + FR XX/20 + MA XX/15 + FC XX/15 = 合計 XX/100
 
 ## Phase 3: Proposal（修正案提示）— Team Lead
 
@@ -108,38 +123,54 @@ Agent team episode rewrite pipeline. Editor + Proofreader parallel diagnosis, th
 - [ ] 承認された修正の適用完了
 - [ ] 修正後のドラフト保存済み
 
-## Phase 5: Quality Gate — 再評価ループ
+## Phase 5: Quality Gate — 5軸再評価ループ
 
 Writer の修正が完了したら、品質ゲートで修正効果を検証する。
 
-→ 採点仕様の詳細は `../team-write-episode/reference/quality-gate.md` を参照。
+→ 採点仕様の詳細は `../team-write-episode/reference/quality-gate.md` (v3) を参照。
 
 ### ループ設定
-- **通過閾値**: 80/100（Editor /50 + Proofreader /50 の合計）
+- **通過閾値**: 80/100（5軸合計）
 - **最大試行回数**: 3回
 - **試行回数のカウント**: 最初の再評価を第1回とする
 
-### 5a. E+P 並列再評価
+### 5a. 5軸並列再評価
 
-以下の2つのサブエージェントを **並列で** 起動する。各エージェントは**自分の専門軸のみ**を採点する（重複なし）。
+以下のサブエージェントを **全て並列で** 起動する。各エージェントは**自分の専門軸のみ**を採点する（重複なし）。
 
-#### editor サブエージェント（50点満点）
+#### editor サブエージェント（25点満点）
 - 対象: 修正後のドラフト
-- 採点軸: Engagement & Emotion /20, Plot & Pacing /15, Prose & Voice /15
+- 採点軸: Engagement & Emotion /10, Plot & Pacing /8, Prose & Voice /7
 - レビュー観点: Phase 2 と同じ + 前回指摘事項の改善確認
-- **必ず 50点満点のスコアを含めること**
+- **必ず 25点満点のスコアを含めること**
 
-#### proofreader サブエージェント（50点満点）
+#### proofreader サブエージェント（25点満点）
 - 対象: 同じドラフト
-- 採点軸: Character Integrity /20, World & Continuity /15, Author Rules & Aesthetics /15
+- 採点軸: Character Integrity /10, World & Continuity /8, Author Rules & Aesthetics /7
 - レビュー観点: Phase 2 と同じ + 前回指摘事項の改善確認
-- **必ず 50点満点のスコアを含めること**
+- **必ず 25点満点のスコアを含めること**
 
-両方の完了を待つ。
+#### first-reader サブエージェント（20点満点）
+- 対象: 同じドラフト（**設定資料は読まない**）
+- 採点軸: Hook /8, Retention /6, Next-want /6
+- **必ず 20点満点のスコアを含めること**
+
+#### mystery-auditor サブエージェント（15点満点）— ミステリー要素がある場合のみ
+- 対象: 同じドラフト
+- 採点軸: Clue Fairplay /5, Rule Consistency /5, Secret Management /5
+- **ミステリー要素がない場合はスキップし、15pt を Editor(+8) と Proofreader(+7) に再配分**
+- **必ず 15点満点のスコアを含めること**
+
+#### freshness-checker サブエージェント（15点満点）
+- 対象: 同じドラフト
+- 採点軸: Pattern /5, Template /5, Explanation Economy /5
+- **必ず 15点満点のスコアを含めること**
+
+全員の完了を待つ。
 
 ### 5b. スコア判定
 
-1. Editor スコア(/50)と Proofreader スコア(/50)を合算する
+1. 5軸のスコアを合算する（合計 /100）
 2. ベースラインからの変化量とともにユーザーに提示する
 
 **合計 ≥ 80 の場合:**
@@ -148,7 +179,7 @@ Writer の修正が完了したら、品質ゲートで修正効果を検証す�
 - Phase 6 へ進む
 
 **合計 < 80 かつ 試行回数 < 3 の場合:**
-- E+P レポートから **Critical / High** の新規課題を抽出する
+- 全レポートから **Critical / High** の新規課題を抽出する
 - **writer** サブエージェントに課題リストを渡して修正を委任する
 - 試行回数をインクリメントし、**5a へ戻る**
 
@@ -167,7 +198,7 @@ Quality Gate の判定が確定したら（通過・不通過・手動判断い�
 
 ### Phase 5 チェックリスト
 - [ ] 合計 ≥ 80 で通過（またはユーザー判断で通過）
-- [ ] スコア推移記録: ベースライン XX → 最終 XX/100
+- [ ] スコア推移記録: ベースライン XX → 最終 XX/100（E XX/25 + P XX/25 + FR XX/20 + MA XX/15 + FC XX/15）
 - [ ] 追加修正の適用完了（該当する場合）
 - [ ] ACTIONLOG 記録完了
 
