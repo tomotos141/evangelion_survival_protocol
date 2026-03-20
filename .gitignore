@@ -17,3 +17,4 @@ tmp/
 docs/marketing/comfyui/output/
 docs/marketing/comfyui/*.png
 _count.ps1
+novel.db
