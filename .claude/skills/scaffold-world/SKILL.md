@@ -54,12 +54,19 @@ description: Generates world-building setting files from design document with se
 - **対比構造**: 主人公 vs ライバルの技の対比ポイント
 - **使用ルール**: 技名・能力名の使用頻度と演出ルール
 
+## 参照テンプレート
+
+- `.agent/templates/world_building_template.md` — Sensory Palette（主軸感覚+対比設計）と Objects of Significance を含む
+
 ## 作成ルール
 
 - 執筆時の参照資料として使えるよう、**具体的な描写の素材**を豊富に入れる
 - 辞書的な説明ではなく、五感で描写できる素材集として構成する
 - Author DNA §2 Non-Visual First を意識し、視覚以外の感覚素材を充実させる
+- **Sensory Palette**: 主軸感覚（battousai=嗅覚、blind_spot=触覚 等）を定め、対比構造を設計する
+- **Objects of Significance**: 物語上で象徴的な意味を持つアイテムを管理する
 - 歴史的・科学的考証が必要な場合は「物語の都合で曲げてよい範囲」を明記する
+- Story Grid の Inside-Out 原則: 百科事典的情報は不要。**物語機能を果たす設定のみ**構築する
 
 ## 検証
 

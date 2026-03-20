@@ -28,7 +28,10 @@ Agent team episode writing pipeline. Orchestrates Writer, Editor, Proofreader, a
    - 直前エピソードのドラフト末尾 — 感情・身体状態の引き継ぎ
    - `docs/world/` 配下の設定ファイル
    - `docs/episodes/ep##_title.md`（エピソードデザイン）
+   - `docs/timeline.md` — タイムライン（存在する場合。連載で日付矛盾を防ぐ）
+   - `docs/style_guide.md` — スタイルガイド（存在する場合。表記統一）
 4. エピソードデザインが未作成なら、ユーザーと相談して作成する
+   - ミステリー/事件回の場合: `.agent/templates/mystery_design_template.md` を参照し、犯人/原因視点からの逆算で手がかりを配置する
 5. ユーザーの承認を得てから Phase 2 へ進む
 
 ### Phase 1 チェックリスト

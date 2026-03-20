@@ -20,7 +20,8 @@ description: Generates individual character files from design document. Creates 
 
 ## 参照テンプレート
 
-- `projects/angel_return/docs/characters/shinji_ikari.md` を `Read` で読み込み、フォーマットのテンプレートとして使用する
+- `.agent/templates/character_template_generic.md` を `Read` で読み込み、Ghost/Lie/Want/Need チェーン含むフォーマットとして使用する
+- 二次創作の場合は既存キャラファイル（例: `projects/angel_return/docs/characters/shinji_ikari.md`）も参考にする
 
 ## 手順
 
@@ -68,7 +69,14 @@ description: Generates individual character files from design document. Creates 
 - **Arc**: 話数を明記する。ただし `Ep.X` 形式ではなく `第X話` または `(X話)` の形式を使う
 - **Relationships**: 他キャラクターとの関係の質（信頼、敵対、共犯、利用 等）と、その関係が物語を通じてどう変化するかを書く
 - **Combat Style**: 戦闘に関わらないキャラクターにはこのセクションを作らない
-- Ghost / Lie / Want / Need チェーンがデザインドキュメントに定義されている場合は、§2 の後にセクションを追加する
+- Ghost / Lie / Want / Need チェーンは全キャラクターに必須（§6 として配置）。デザインドキュメントに未定義の場合はキャラクター設定から推定して作成する
+
+## Character Web の作成
+
+キャラクター個別ファイルに加えて、`{project_path}/docs/characters/_character_web.md` を作成する:
+- `.agent/templates/character_web_template.md` を参照
+- テーマ回答マトリクス、関係性マトリクス、対比の設計を含む
+- 全キャラクターが相互関係の網として機能していることを検証する
 
 ## 検証
 
