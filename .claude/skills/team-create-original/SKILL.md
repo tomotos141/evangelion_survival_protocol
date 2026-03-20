@@ -236,7 +236,24 @@ Phase 2〜3 の全成果物を `.agent/profiles/{project_name}.md` に凝縮す�
 
 ## Phase 5: Handoff（引き渡し）— Team Lead
 
-1. 作成された全成果物の一覧を提示する:
+1. **DB登録**: `tools/novel_db.py` で SQLite DB に構造化データを登録する:
+   ```bash
+   # プロジェクト登録
+   python tools/novel_db.py query "INSERT INTO projects (id, title, genre, status, platform, target_readers, logline, theme, sensory_axis) VALUES (...)"
+   # キャラクター登録
+   python tools/novel_db.py query "INSERT INTO characters (...) VALUES (...)"
+   # キャラ関係登録
+   python tools/novel_db.py query "INSERT INTO character_relationships (...) VALUES (...)"
+   # エピソード登録（planned 状態で）
+   python tools/novel_db.py query "INSERT INTO episodes (...) VALUES (...)"
+   # 伏線登録
+   python tools/novel_db.py query "INSERT INTO foreshadowing (...) VALUES (...)"
+   # 用語辞書登録
+   python tools/novel_db.py query "INSERT INTO terms (...) VALUES (...)"
+   # タイムライン登録
+   python tools/novel_db.py query "INSERT INTO timeline_events (...) VALUES (...)"
+   ```
+2. 作成された全成果物の一覧を提示する:
    - リサーチドキュメント（`docs/research/`）
    - 世界設定ドキュメント（`docs/world/`）
    - キャラクタードキュメント（`docs/characters/`）

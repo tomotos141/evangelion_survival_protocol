@@ -13,6 +13,8 @@ Agent team episode writing pipeline. Orchestrates Writer, Editor, Proofreader, a
 - `reference/actionlog-template.md` — ACTIONLOG 記録テンプレート
 - `reference/actions.jsonl` — 実行ログ（自動蓄積）
 
+**データベース**: `tools/novel_db.py` — SQLite CLI。エピソード・キャラ・伏線・タイムラインの構造化データ管理。
+
 ---
 
 ## Phase 1: Preparation（準備）— Team Lead が実施
@@ -155,12 +157,18 @@ Quality Gate 通過後:
 
 ## Phase 5: Completion（完了）
 
-1. 全成果物の一覧を提示する:
+1. **DB更新**: `Bash` で以下を実行して SQLite DB を更新する:
+   ```bash
+   python tools/novel_db.py query "UPDATE episodes SET word_count=XXXX, editor_score=XX, proofreader_score=XX, total_score=XX, status='completed' WHERE project_id='PROJECT' AND number=NN"
+   ```
+   - タイムラインに新規イベントがあれば `timeline_events` に INSERT
+   - 伏線のステータスが変わったら `foreshadowing` を UPDATE
+2. 全成果物の一覧を提示する:
    - `drafts/XX_title.md`（ドラフト）
    - `dist/pixiv/XX_title_pixiv.txt`（Pixiv版）
    - `dist/hameln/XX_title_hameln.txt`（ハーメルン版）
    - `dist/pixiv/caption.txt`（キャプション更新）
    - 更新されたドキュメント類
    - Quality Gate スコア推移（全イテレーション）
-2. コミットの要否をユーザーに確認する
-3. コミットが指示された場合のみ実行する
+3. コミットの要否をユーザーに確認する
+4. コミットが指示された場合のみ実行する
