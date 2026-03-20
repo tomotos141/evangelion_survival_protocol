@@ -75,24 +75,25 @@ description: 小説の品質・エンターテインメント性を分析し、�
 
 単なる指摘ではなく「実際に書き換えたパラグラフ」を必ず提示すること。
 
-## Quality Gate スコア（Editor 担当: 50点満点）
+## Quality Gate スコア（Editor 担当: 25点満点）
 
-Proofreader（50点）と合算して 100点満点。閾値 80/100 で Quality Gate を判定する。
-Editor は「技巧と没入」を担当する。Proofreader の軸とは重複しない。
+5軸合計 100点満点。閾値 80/100 で Quality Gate を判定する。
+Editor は「技巧と没入」を担当する。他4軸とは重複しない。
+→ 採点仕様の詳細は `.claude/skills/team-write-episode/reference/quality-gate.md` (v3) を参照。
 
-| 軸 | 配点 | 観点 | 根拠 |
-|---|---|---|---|
-| Engagement & Emotion | /20 | フック、没入度、感情的インパクト、不穏さ、予定調和回避 | Book-Length Study (2025): 主観側で読者満足度と最高相関 |
-| Plot & Pacing | /15 | シーン構成、テンション曲線、Scene & Sequel、MRU順序、Battle Tempo | 全フレームワーク横断で最も普遍的な評価軸 |
-| Prose & Voice | /15 | 散文密度、Natural Prose、AI臭排除、語りの声の一貫性、文長バリエーション | Mozaffari (2013) で独立軸。ただし実証上差がつきにくいため /15 |
+| 軸 | 配点 | 観点 |
+|---|---|---|
+| Engagement & Emotion | /10 | フック、没入度、感情的インパクト、不穏さ、予定調和回避 |
+| Plot & Pacing | /8 | シーン構成、テンション曲線、Scene & Sequel、MRU順序、Battle Tempo |
+| Prose & Voice | /7 | 散文密度、語りの声の一貫性、文長バリエーション |
 
 **出力フォーマット（レポート末尾に必須）:**
 
 ```
-## Editor Score: XX/50
-- Engagement & Emotion: XX/20
-- Plot & Pacing: XX/15
-- Prose & Voice: XX/15
+## Editor Score: XX/25
+- Engagement & Emotion: XX/10
+- Plot & Pacing: XX/8
+- Prose & Voice: XX/7
 ```
 
 **採点基準:**

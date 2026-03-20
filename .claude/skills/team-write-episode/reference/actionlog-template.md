@@ -25,6 +25,9 @@ entry = json.dumps({
     'word_count': ${WORD_COUNT},
     'editor_score': ${EDITOR_SCORE},
     'proofreader_score': ${PROOFREADER_SCORE},
+    'first_reader_score': ${FIRST_READER_SCORE},
+    'mystery_auditor_score': ${MYSTERY_AUDITOR_SCORE},
+    'freshness_score': ${FRESHNESS_SCORE},
     'total_score': ${TOTAL_SCORE},
     'retries': ${RETRY_COUNT},
     'outcome': '${OUTCOME}',
@@ -46,8 +49,11 @@ print(f'Logged: {entry}')
 | project | string | プロジェクト名（例: `battousai`, `angel_return`） |
 | episode | string | エピソードファイル名（例: `07_intersection`） |
 | word_count | number | 最終ドラフトの文字数 |
-| editor_score | number | Editor スコア（/50） |
-| proofreader_score | number | Proofreader スコア（/50） |
+| editor_score | number | Editor スコア（/25） |
+| proofreader_score | number | Proofreader スコア（/25） |
+| first_reader_score | number | First Reader スコア（/20） |
+| mystery_auditor_score | number | Mystery Auditor スコア（/15、スキップ時は null） |
+| freshness_score | number | Freshness Check スコア（/15） |
 | total_score | number | 合計スコア（/100） |
 | retries | number | Quality Gate リトライ回数（0 = 一発通過） |
 | outcome | string | `pass` / `fail` / `manual_override` |

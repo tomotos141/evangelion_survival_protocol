@@ -9,9 +9,11 @@ Agent team episode writing pipeline. Orchestrates Writer, Editor, Proofreader, a
 
 **スキルの場所**: `.claude/skills/team-write-episode/`
 **参照ファイル**:
-- `reference/quality-gate.md` — Quality Gate v2 採点仕様（Editor 50pt + Proofreader 50pt）
+- `reference/quality-gate.md` — Quality Gate v3 採点仕様（5軸 100pt）
 - `reference/actionlog-template.md` — ACTIONLOG 記録テンプレート
 - `reference/actions.jsonl` — 実行ログ（自動蓄積）
+
+**データベース**: `tools/novel_db.py` — SQLite CLI。エピソード・キャラ・伏線・タイムラインの構造化データ管理。
 
 ---
 
@@ -28,7 +30,10 @@ Agent team episode writing pipeline. Orchestrates Writer, Editor, Proofreader, a
    - 直前エピソードのドラフト末尾 — 感情・身体状態の引き継ぎ
    - `docs/world/` 配下の設定ファイル
    - `docs/episodes/ep##_title.md`（エピソードデザイン）
+   - `docs/timeline.md` — タイムライン（存在する場合。連載で日付矛盾を防ぐ）
+   - `docs/style_guide.md` — スタイルガイド（存在する場合。表記統一）
 4. エピソードデザインが未作成なら、ユーザーと相談して作成する
+   - ミステリー/事件回の場合: `.agent/templates/mystery_design_template.md` を参照し、犯人/原因視点からの逆算で手がかりを配置する
 5. ユーザーの承認を得てから Phase 2 へ進む
 
 ### Phase 1 チェックリスト
@@ -55,48 +60,63 @@ Writer の完了を待つ。
 - [ ] Writer の出力が 7,000〜10,000字の範囲内
 - [ ] ドラフトファイル保存済み
 
-## Phase 3: Quality Gate — E+P 評価ループ
+## Phase 3: Quality Gate — 5軸評価ループ
 
 Writer の出力が完了したら、品質ゲートに入る。
 
-→ 採点仕様の詳細は `reference/quality-gate.md` を参照。
+→ 採点仕様の詳細は `reference/quality-gate.md` (v3) を参照。
 
 ### ループ設定
-- **通過閾値**: 80/100（Editor /50 + Proofreader /50 の合計）
+- **通過閾値**: 80/100（5軸合計）
 - **最大試行回数**: 3回
-- **試行回数のカウント**: 最初の E+P 評価を第1回とする
+- **試行回数のカウント**: 最初の評価を第1回とする
 
-### 3a. E+P 並列評価
+### 3a. 5軸並列評価
 
-以下の2つのサブエージェントを **並列で** 起動する。各エージェントは**自分の専門軸のみ**を採点する（重複なし）。
+以下のサブエージェントを **全て並列で** 起動する。各エージェントは**自分の専門軸のみ**を採点する（重複なし）。
 
-#### editor サブエージェント（50点満点）
+#### editor サブエージェント（25点満点）
 - 対象: 現在のドラフト
-- 採点軸: Engagement & Emotion /20, Plot & Pacing /15, Prose & Voice /15
-- レビュー観点: 文体、ペース配分、読者没入度、Natural Prose、Story Profile固有の構造チェック
-- **必ず 50点満点のスコアを含めること**（editor.md の Quality Gate スコア参照）
+- 採点軸: Engagement & Emotion /10, Plot & Pacing /8, Prose & Voice /7
+- **必ず 25点満点のスコアを含めること**
 
-#### proofreader サブエージェント（50点満点）
+#### proofreader サブエージェント（25点満点）
 - 対象: 同じドラフト
-- 採点軸: Character Integrity /20, World & Continuity /15, Author Rules & Aesthetics /15
-- レビュー観点: 設定整合性、キャラクター一貫性、時系列、著者美学
+- 採点軸: Character Integrity /10, World & Continuity /8, Author Rules & Aesthetics /7
 - 参照: `docs/characters/`, `docs/world/`, `docs/foreshadowing.md`
-- **必ず 50点満点のスコアを含めること**（proofreader.md の Quality Gate スコア参照）
+- **必ず 25点満点のスコアを含めること**
 
-両方の完了を待つ。
+#### first-reader サブエージェント（20点満点）
+- 対象: 同じドラフト（**設定資料は読まない**）
+- 採点軸: Hook /8, Retention /6, Next-want /6
+- **必ず 20点満点のスコアを含めること**
+
+#### mystery-auditor サブエージェント（15点満点）— ミステリー要素がある場合のみ
+- 対象: 同じドラフト
+- 採点軸: Clue Fairplay /5, Rule Consistency /5, Secret Management /5
+- 参照: `docs/mystery_design.md`, `docs/world/core_rules.md`
+- **ミステリー要素がない場合はスキップし、15pt を Editor(+8) と Proofreader(+7) に再配分**
+- **必ず 15点満点のスコアを含めること**
+
+#### freshness-checker サブエージェント（15点満点）
+- 対象: 同じドラフト
+- 採点軸: Pattern /5, Template /5, Explanation Economy /5
+- **必ず 15点満点のスコアを含めること**
+
+全員の完了を待つ。
 
 ### 3b. スコア判定
 
-1. Editor スコア(/50)と Proofreader スコア(/50)を合算する
+1. 5軸のスコアを合算する（合計 /100）
 2. 合計スコアとイテレーション番号をユーザーに提示する
 
 **合計 ≥ 80 の場合:**
-- E+P レポートの残課題をユーザーに提示する（軽微な修正の承認判断）
+- 残課題をユーザーに提示する（軽微な修正の承認判断）
 - 承認された修正があれば **writer** サブエージェントに委任して適用する
 - Phase 4 へ進む
 
 **合計 < 80 かつ 試行回数 < 3 の場合:**
-- E+P レポートから **Critical / High** の課題を抽出する
+- 全レポートから **Critical / High** の課題を抽出する
 - **writer** サブエージェントに課題リストを渡して修正を委任する
 - 試行回数をインクリメントし、**3a へ戻る**
 
@@ -114,7 +134,7 @@ Quality Gate の判定が確定したら（通過・不通過・手動判断い�
 
 ### Phase 3 チェックリスト
 - [ ] スコア ≥ 80 で通過（またはユーザー判断で通過）
-- [ ] 最終スコア記録: Editor XX/50 + Proofreader XX/50 = 合計 XX/100
+- [ ] 最終スコア記録: E XX/25 + P XX/25 + FR XX/20 + MA XX/15 + FC XX/15 = 合計 XX/100
 - [ ] 残課題の修正適用完了（該当する場合）
 - [ ] ACTIONLOG 記録完了
 
@@ -152,12 +172,18 @@ Quality Gate 通過後:
 
 ## Phase 5: Completion（完了）
 
-1. 全成果物の一覧を提示する:
+1. **DB更新**: `Bash` で以下を実行して SQLite DB を更新する:
+   ```bash
+   python tools/novel_db.py query "UPDATE episodes SET word_count=XXXX, editor_score=XX, proofreader_score=XX, first_reader_score=XX, mystery_auditor_score=XX, freshness_score=XX, total_score=XX, status='completed' WHERE project_id='PROJECT' AND number=NN"
+   ```
+   - タイムラインに新規イベントがあれば `timeline_events` に INSERT
+   - 伏線のステータスが変わったら `foreshadowing` を UPDATE
+2. 全成果物の一覧を提示する:
    - `drafts/XX_title.md`（ドラフト）
    - `dist/pixiv/XX_title_pixiv.txt`（Pixiv版）
    - `dist/hameln/XX_title_hameln.txt`（ハーメルン版）
    - `dist/pixiv/caption.txt`（キャプション更新）
    - 更新されたドキュメント類
    - Quality Gate スコア推移（全イテレーション）
-2. コミットの要否をユーザーに確認する
-3. コミットが指示された場合のみ実行する
+3. コミットの要否をユーザーに確認する
+4. コミットが指示された場合のみ実行する
