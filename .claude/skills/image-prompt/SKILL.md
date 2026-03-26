@@ -1,6 +1,6 @@
 ---
 name: image-prompt
-description: "Designs SDXL-optimized prompts for ComfyUI image generation. Covers prompt structure, weighting, negative prompts, sampler pairing, and iterative refinement. Reference keyword tables in `reference/prompt_vocabulary.md`. Research basis: `docs/research/sdxl_prompt_engineering.md`."
+description: "Designs SDXL-optimized prompts for ComfyUI image generation. Covers prompt structure, weighting, negative prompts, sampler pairing, and iterative refinement. Use when the user wants to design or refine image generation prompts, or needs ComfyUI workflow JSON. Reference keyword tables in `reference/prompt_vocabulary.md`."
 ---
 
 # image-prompt
