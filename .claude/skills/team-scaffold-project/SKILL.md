@@ -1,6 +1,6 @@
 ---
 name: team-scaffold-project
-description: Project foundation scaffold pipeline. Orchestrates scaffold sub-skills to build all base files from design document.
+description: Project foundation scaffold pipeline. Orchestrates scaffold sub-skills to build all base files from design document. Use when a design document is complete and all base project files need to be generated.
 ---
 
 # team-scaffold-project
@@ -151,4 +151,14 @@ Phase 1: ディレクトリ作成
        └→ Phase 3（並列）: Overall Plot + Foreshadowing
             └→ Phase 4: Review & Commit
                  └→ Phase 5: Handoff → team-write-episode
+```
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/team-scaffold-project/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"team-scaffold-project","action":"scaffold","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
 ```

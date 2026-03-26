@@ -1,6 +1,6 @@
 ---
 name: image-prompt
-description: "Designs SDXL-optimized prompts for ComfyUI image generation. Covers prompt structure, weighting, negative prompts, sampler pairing, and iterative refinement. Reference keyword tables in `reference/prompt_vocabulary.md`. Research basis: `docs/research/sdxl_prompt_engineering.md`."
+description: "Designs SDXL-optimized prompts for ComfyUI image generation. Covers prompt structure, weighting, negative prompts, sampler pairing, and iterative refinement. Use when the user wants to design or refine image generation prompts, or needs ComfyUI workflow JSON. Reference keyword tables in `reference/prompt_vocabulary.md`."
 ---
 
 # image-prompt
@@ -148,6 +148,8 @@ low quality, blurry, distorted, watermark, text
 
 ## ComfyUI API 実行
 
+> **Note**: ポート番号は CLAUDE.md § ComfyUI Integration を参照。ComfyUI Desktop のデフォルトは 8000。
+
 ComfyUI Desktop が起動中の場合、API で直接生成できる:
 
 ```bash
@@ -172,3 +174,18 @@ curl -s "http://127.0.0.1:8000/view?filename={filename}" -o output.png
 3. **推奨パラメータ** (sampler, steps, CFG, 解像度)
 4. **ComfyUI JSON** (必要に応じて)
 5. **改善メモ** (生成結果を見て次に試すべき変更)
+
+## 依存
+
+- `reference/prompt_vocabulary.md` — キーワードカタログ
+- CLAUDE.md § ComfyUI Integration — ComfyUI 接続設定
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/image-prompt/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"image-prompt","action":"generate","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

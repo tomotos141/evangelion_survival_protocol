@@ -1,6 +1,6 @@
 ---
 name: check-arc-consistency
-description: Character arc consistency checker. Cross-references Status Evolution Logs against episode scene designs to detect misalignment.
+description: Character arc consistency checker. Cross-references Status Evolution Logs against episode scene designs to detect misalignment. Use when verifying character arcs match episode scenes after plot or character changes.
 ---
 
 # check-arc-consistency
@@ -81,3 +81,18 @@ Status Evolution Log に記載されている変化が、対応するエピソ�
 - `original_cast.md` に複数キャラが含まれる場合、それぞれ個別にチェックする。
 - 「痕跡のみ」のキャラクター（霧島マナ等）はアークチェックの対象外。データログ等での言及のみ確認。
 - overall_plot_v2.md の Act サマリとの突合は本スキルのスコープ外（`audit-design` で対応）。
+
+## 依存
+
+- `docs/characters/*.md` — キャラクター設定（Ghost/Lie/Truth チェーン、Status Evolution Log）
+- `docs/episodes/ep*.md` — エピソードデザイン（シーン構成、構造的仕掛け）
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/check-arc-consistency/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"check-arc-consistency","action":"analyze","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

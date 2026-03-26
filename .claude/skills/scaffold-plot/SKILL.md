@@ -1,6 +1,6 @@
 ---
 name: scaffold-plot
-description: Generates overall plot document from design document. Expands act structure into per-episode summaries.
+description: Generates overall plot document from design document. Expands act structure into per-episode summaries. Use when scaffolding the overall plot from a completed design document.
 ---
 
 # scaffold-plot
@@ -65,3 +65,18 @@ description: Generates overall plot document from design document. Expands act s
 - 全話がカバーされていることを確認する
 - 幕ごとの主題が Story Profile のテーマ（§3）と整合していることを確認する
 - `Grep` で `Ep.\d` パターンの残存を確認する
+
+## 依存
+
+- `.agent/profiles/{project}.md` — Story Profile（構造設計原則の整合性チェック用）
+- デザインドキュメント §6（幕構成）、§8（構造設計原則）
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/scaffold-plot/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"scaffold-plot","action":"scaffold","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```
