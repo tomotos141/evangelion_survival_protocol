@@ -1,6 +1,6 @@
 ---
 name: scaffold-story-profile
-description: Generates Story Profile from design document. Distills aesthetics, tone, theme, characters, and constraints.
+description: Generates Story Profile from design document. Distills aesthetics, tone, theme, characters, and constraints. Use when creating a Story Profile from a completed design document.
 ---
 
 # scaffold-story-profile
@@ -68,3 +68,18 @@ description: Generates Story Profile from design document. Distills aesthetics, 
 
 - 作成後、テンプレート（angel_return.md）とセクション数・構成が整合していることを確認する
 - `Grep` で `Ep.\d` パターンの残存を確認する
+
+## 依存
+
+- `.agent/profiles/angel_return.md` — セクション構成テンプレート
+- デザインドキュメント全文
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/scaffold-story-profile/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"scaffold-story-profile","action":"scaffold","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

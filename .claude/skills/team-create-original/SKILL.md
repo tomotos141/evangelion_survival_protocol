@@ -1,6 +1,6 @@
 ---
 name: team-create-original
-description: Original work creation pipeline. Guides from seed concept through research, world-building, characters, plot, to Story Profile crystallization.
+description: Original work creation pipeline. Guides from seed concept through research, world-building, characters, plot, to Story Profile crystallization. Use when starting a new original work from scratch.
 ---
 
 # team-create-original
@@ -280,3 +280,21 @@ Phase 2〜3 の全成果物を `.agent/profiles/{project_name}.md` に凝縮す�
 
 **5つのチェックポイントがある理由**:
 オリジナル作品は土台の間違いが全話に波及する。各段階でユーザーの承認を取ることで、大規模な手戻りを防ぐ。
+
+## 依存
+
+- `.agent/author_profile.md` — Author DNA
+- `.agent/templates/` — 各種テンプレート（character, world_building, conflict, timeline, style_guide, mystery_design）
+- `tools/novel_db.py` — SQLite DB CLI（Phase 5 の DB 登録）
+- `/audit-design` スキル — Phase 3, 4 での整合性検証（オプション）
+- `/scaffold-story-profile` スキル — Phase 4 の Story Profile 結晶化
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/team-create-original/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"team-create-original","action":"generate","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

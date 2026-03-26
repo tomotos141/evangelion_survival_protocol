@@ -1,6 +1,6 @@
 ---
 name: team-rewrite-episode
-description: Agent team episode rewrite pipeline. Editor + Proofreader parallel diagnosis, then Writer revision and Publisher post-processing.
+description: Agent team episode rewrite pipeline. Editor + Proofreader parallel diagnosis, then Writer revision and Publisher post-processing. Use when rewriting or revising an existing episode draft.
 ---
 
 # team-rewrite-episode
@@ -221,7 +221,7 @@ Quality Gate の判定が確定したら（通過・不通過・手動判断い�
 2. **ドキュメント更新**: 伏線管理表（`docs/foreshadowing.md`）、設定ファイル等を必要に応じて更新
 3. **クリップボードコピー**: `Bash` で以下を実行:
    ```
-   powershell -ExecutionPolicy Bypass -File "d:\VibeWorkspace\novel\copy_to_clip.ps1" "<pixiv_file_absolute_path>" "<draft_file_absolute_path>"
+   powershell -ExecutionPolicy Bypass -File "./copy_to_clip.ps1" "<pixiv_file_absolute_path>" "<draft_file_absolute_path>"
    ```
 4. **Note**: リライトで構造的な変更（シーン追加・削除、キャラクターの行動変更等）があった場合、`sync-story-profile` スキルで Story Profile への反映要否を確認できる。
 
@@ -238,3 +238,22 @@ Quality Gate の判定が確定したら（通過・不通過・手動判断い�
    - Quality Gate スコア推移（ベースライン → 全イテレーション）
 2. コミットの要否をユーザーに確認する
 3. コミットが指示された場合のみ実行する
+
+## 依存
+
+- `.agent/profiles/{project_name}.md` — Story Profile
+- `../team-write-episode/reference/quality-gate.md` — Quality Gate v3 採点仕様（共有）
+- `../team-write-episode/reference/actionlog-template.md` — ACTIONLOG 記録テンプレート（共有）
+- `docs/foreshadowing.md` — 伏線管理表
+- `docs/characters/*.md`, `docs/world/` — 設定ファイル
+- `./copy_to_clip.ps1` — クリップボードコピースクリプト
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/team-rewrite-episode/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"team-rewrite-episode","action":"rewrite","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

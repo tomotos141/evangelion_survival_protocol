@@ -1,6 +1,6 @@
 ---
 name: scaffold-characters
-description: Generates individual character files from design document. Creates Ghost/Lie chains, voice samples, and behavioral rules.
+description: Generates individual character files from design document. Creates Ghost/Lie chains, voice samples, and behavioral rules. Use when scaffolding character files from a completed design document.
 ---
 
 # scaffold-characters
@@ -83,3 +83,19 @@ description: Generates individual character files from design document. Creates 
 - 全キャラクターのファイルが作成されていることを確認する
 - 各ファイルの Theme Answer が中心テーマと整合していることを確認する
 - `Grep` で `Ep.\d` パターンの残存を確認する
+
+## 依存
+
+- `.agent/templates/character_template_generic.md` — キャラクターテンプレート
+- `.agent/templates/character_web_template.md` — Character Web テンプレート
+- デザインドキュメント §5（キャラクター・ダイナミクス）
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/scaffold-characters/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"scaffold-characters","action":"scaffold","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

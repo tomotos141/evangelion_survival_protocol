@@ -1,6 +1,6 @@
 ---
 name: scaffold-world
-description: Generates world-building setting files from design document with sensory-rich descriptions.
+description: Generates world-building setting files from design document with sensory-rich descriptions. Use when scaffolding world-building files from a completed design document.
 ---
 
 # scaffold-world
@@ -72,3 +72,19 @@ description: Generates world-building setting files from design document with se
 
 - 全ファイルが `{project_path}/docs/world/` に配置されていることを確認する
 - Story Profile の世界設定セクション（§4）と矛盾がないことを確認する
+
+## 依存
+
+- `.agent/templates/world_building_template.md` — 世界構築テンプレート（Sensory Palette、Objects of Significance）
+- `.agent/author_profile.md` — Author DNA §2 Non-Visual First
+- デザインドキュメント §7, §9（世界観関連セクション）
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/scaffold-world/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"scaffold-world","action":"scaffold","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```
