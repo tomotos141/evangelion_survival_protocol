@@ -1,6 +1,6 @@
 ---
 name: audit-design
-description: Design audit: checks plot/design against Author DNA, Story Profile, and author preference history. Produces a structured divergence report.
+description: Design audit: checks plot/design against Author DNA, Story Profile, and author preference history. Produces a structured divergence report. Use when reviewing plot or design documents for alignment with author aesthetics.
 ---
 
 # audit-design
@@ -71,3 +71,19 @@ description: Design audit: checks plot/design against Author DNA, Story Profile,
 - レポートは修正を **提案** するのみ。実際の修正はユーザーの判断を仰ぐ。
 - 「一致点」も必ず記載する。何が良いかを明示しないと、何を守るべきかが分からない。
 - 1つの乖離に対して複数の修正案がある場合は、選択肢として提示する。
+
+## 依存
+
+- `.agent/author_profile.md` — Author DNA（著者美学の基準）
+- `.agent/profiles/{project}.md` — Story Profile（作品固有の美学・ルール）
+- `author_evolution.md` — 作者の好み変遷（メモリ内、存在する場合）
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/audit-design/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"audit-design","action":"analyze","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

@@ -1,6 +1,6 @@
 ---
 name: ai-rewrite-ja
-description: Rewrites AI-generated Japanese text into natural human-like prose. Removes template phrasing, excessive politeness, abstract buzzwords, and Markdown formatting.
+description: Rewrites AI-generated Japanese text into natural human-like prose. Removes template phrasing, excessive politeness, abstract buzzwords, and Markdown formatting. Use when AI-generated Japanese draft needs humanization or de-templating.
 ---
 
 # ai-rewrite-ja
@@ -40,3 +40,17 @@ AIが書いた日本語の下書きを、読み手が「人が書いた」と感
 - 書き換え後の文章だけを出力する。解説・前置き・注意書き・チェックリストは出さない。
 - 元の段落構成は大きく崩さず、読みやすい段落に整える。
 - 文章量は元文から大きく増減させない。目安は±20%以内。
+
+## 依存
+
+- なし（入力テキストのみ）
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/ai-rewrite-ja/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"ai-rewrite-ja","action":"rewrite","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

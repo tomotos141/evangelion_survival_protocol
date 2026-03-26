@@ -78,3 +78,18 @@ cat .claude/skills/team-rewrite-episode/reference/actions.jsonl 2>/dev/null
 | リトライ率が50%超 | Writer の事前参照ファイルを増やす |
 | 文字数が7000未満が多い | 散文密度の指示を強化する |
 | Prose & Voice が常に低い | Author DNA §4 Natural Prose の見直し |
+
+## 依存
+
+- `.claude/skills/team-write-episode/reference/actions.jsonl` — 新規執筆ログ
+- `.claude/skills/team-rewrite-episode/reference/actions.jsonl` — リライトログ
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/writing-report/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"writing-report","action":"analyze","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

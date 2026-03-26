@@ -1,6 +1,6 @@
 ---
 name: team-write-episode
-description: Agent team episode writing pipeline. Orchestrates Writer, Editor, Proofreader, and Publisher for new episodes.
+description: Agent team episode writing pipeline. Orchestrates Writer, Editor, Proofreader, and Publisher for new episodes. Use when writing a new episode from an episode design.
 ---
 
 # team-write-episode
@@ -159,7 +159,7 @@ Quality Gate 通過後:
 2. **ドキュメント更新**: `overall_plot.md`, `foreshadowing.md` 等を必要に応じて更新
 3. **クリップボードコピー**: `Bash` で以下を実行:
    ```
-   powershell -ExecutionPolicy Bypass -File "d:\VibeWorkspace\novel\copy_to_clip.ps1" "<pixiv_file_absolute_path>" "<draft_file_absolute_path>"
+   powershell -ExecutionPolicy Bypass -File "./copy_to_clip.ps1" "<pixiv_file_absolute_path>" "<draft_file_absolute_path>"
    ```
 4. **Note**: エピソードが構造設計原則に影響する変更を含む場合、`sync-story-profile` スキルで Story Profile への反映要否を確認できる。
 
@@ -187,3 +187,24 @@ Quality Gate 通過後:
    - Quality Gate スコア推移（全イテレーション）
 3. コミットの要否をユーザーに確認する
 4. コミットが指示された場合のみ実行する
+
+## 依存
+
+- `.agent/profiles/{project_name}.md` — Story Profile
+- `reference/quality-gate.md` — Quality Gate v3 採点仕様
+- `reference/actionlog-template.md` — ACTIONLOG 記録テンプレート
+- `docs/overall_plot.md`, `docs/foreshadowing.md` — プロット・伏線管理
+- `docs/characters/*.md`, `docs/world/` — 設定ファイル
+- `docs/episodes/ep##_title.md` — エピソードデザイン
+- `tools/novel_db.py` — SQLite DB CLI（Phase 5 の DB 更新）
+- `./copy_to_clip.ps1` — クリップボードコピースクリプト
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/team-write-episode/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"team-write-episode","action":"write","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

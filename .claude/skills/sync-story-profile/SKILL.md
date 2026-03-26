@@ -1,6 +1,6 @@
 ---
 name: sync-story-profile
-description: Syncs design changes to Story Profile. Detects changes via git diff and proposes updates.
+description: Syncs design changes to Story Profile. Detects changes via git diff and proposes updates. Use when design documents have been modified and Story Profile needs to reflect those changes.
 ---
 
 # sync-story-profile
@@ -75,3 +75,19 @@ Before/After 形式で更新案を提示する:
 - Story Profile は Writer/Editor エージェントが執筆時に参照する。冗長な情報は入れず、**行動指針として使える粒度** を維持する。
 - キャラクターの詳細は `docs/characters/` に委任し、Story Profile には Lie と Theme Answer の要約のみ記載する。
 - `git diff` がない場合（未コミットの変更）は、ユーザーに変更内容を確認する。
+
+## 依存
+
+- `.agent/profiles/{project}.md` — Story Profile（同期先）
+- `docs/overall_plot*.md`, `docs/characters/*.md`, `docs/episodes/*.md` — 変更元ドキュメント
+- `.agent/author_profile.md` — Author DNA（変更カテゴリの分類用）
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/sync-story-profile/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"sync-story-profile","action":"sync","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```

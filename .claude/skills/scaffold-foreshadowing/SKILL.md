@@ -1,6 +1,6 @@
 ---
 name: scaffold-foreshadowing
-description: Generates foreshadowing tracking table from design document with unique IDs and status indicators.
+description: Generates foreshadowing tracking table from design document with unique IDs and status indicators. Use when creating a foreshadowing tracker from a completed design document.
 ---
 
 # scaffold-foreshadowing
@@ -68,3 +68,18 @@ description: Generates foreshadowing tracking table from design document with un
 - デザインドキュメントに定義された全ての伏線ラインがカバーされていることを確認する
 - ID が一意であることを確認する
 - `Grep` で `Ep.\d` パターンの残存を確認する
+
+## 依存
+
+- デザインドキュメント §10（伏線管理セクション）
+- `projects/angel_return/docs/foreshadowing.md` — フォーマットテンプレート
+
+## Telemetry
+
+スキル完了時に actions.jsonl に追記:
+
+```bash
+cat >> .claude/skills/scaffold-foreshadowing/reference/actions.jsonl << JSONL
+{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","skill":"scaffold-foreshadowing","action":"scaffold","input_summary":"[入力要約]","output_summary":"[結果要約]","issues":[],"successes":[],"user_feedback":"none"}
+JSONL
+```
