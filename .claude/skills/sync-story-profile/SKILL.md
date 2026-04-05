@@ -84,6 +84,8 @@ Before/After 形式で更新案を提示する:
 
 ## Telemetry
 
+**このステップはスキル完了時に必ず実行すること。省略は禁止。**
+
 スキル完了時に actions.jsonl に追記:
 
 ```bash

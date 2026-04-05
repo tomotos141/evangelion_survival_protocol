@@ -182,6 +182,8 @@ curl -s "http://127.0.0.1:8000/view?filename={filename}" -o output.png
 
 ## Telemetry
 
+**このステップはスキル完了時に必ず実行すること。省略は禁止。**
+
 スキル完了時に actions.jsonl に追記:
 
 ```bash

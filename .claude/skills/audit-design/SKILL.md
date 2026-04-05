@@ -80,6 +80,8 @@ description: Design audit: checks plot/design against Author DNA, Story Profile,
 
 ## Telemetry
 
+**このステップはスキル完了時に必ず実行すること。省略は禁止。**
+
 スキル完了時に actions.jsonl に追記:
 
 ```bash

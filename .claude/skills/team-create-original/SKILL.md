@@ -291,6 +291,8 @@ Phase 2〜3 の全成果物を `.agent/profiles/{project_name}.md` に凝縮す�
 
 ## Telemetry
 
+**このステップはスキル完了時に必ず実行すること。省略は禁止。**
+
 スキル完了時に actions.jsonl に追記:
 
 ```bash

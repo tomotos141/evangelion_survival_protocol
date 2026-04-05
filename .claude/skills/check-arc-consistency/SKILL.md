@@ -89,6 +89,8 @@ Status Evolution Log に記載されている変化が、対応するエピソ�
 
 ## Telemetry
 
+**このステップはスキル完了時に必ず実行すること。省略は禁止。**
+
 スキル完了時に actions.jsonl に追記:
 
 ```bash
